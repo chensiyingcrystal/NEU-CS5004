@@ -11,28 +11,30 @@ import static org.junit.Assert.assertEquals;
  */
 public class BookTest {
 
-    private Person john;
+    private Book headfirstJava;
 
+    Person Crystal = new Person("Siying", "Chen", 1993);
     @Before
     public void setUp() {
 
-        john = new Person("John", "Doe", 1945);
+        headfirstJava = new Book("headfirstJava", Crystal, (float) 66.68);
     }
 
     @Test
     public void testFirst() {
-        assertEquals("John", john.getFirstName());
+        assertEquals("headfirstJava", headfirstJava.getTitle());
 
     }
 
     @Test
     public void testSecond() {
-        assertEquals("Doe", john.getLastName());
+        assertEquals((float)66.68, headfirstJava.getPrice());
     }
 
     @Test
-    public void testYearOfBirth() {
-        assertEquals(1945, john.getYearOfBirth());
+    public void testThird() {
+        assertEquals(Crystal, headfirstJava.getAuthor());
+
     }
 
 }
