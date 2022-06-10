@@ -1,5 +1,3 @@
-import java.util.NoSuchElementException;
-
 public class Rectangle {
     private int x;
     private int y;
@@ -22,30 +20,29 @@ public class Rectangle {
     }
 
     public boolean overlap(Rectangle other) {
-        return !(this.x >= other.x + width) && !(this.x + width <= other.x)
-                && !(this.y >= other.y + height) && !(this.y + height <= other.y);
+        return !(this.x >= other.x + other.width) && !(this.x + this.width <= other.x)
+                && !(this.y >= other.y + other.height) && !(this.y + this.height <= other.y);
     }
 
     public Rectangle intersect(Rectangle other) {
         if (!this.overlap(other)) {
-            throw new NoSuchElementException("The two rectangles have no intersection!");
+            throw new java.util.NoSuchElementException("The two rectangles have no intersection!");
+        }
 
         Rectangle intersection = new Rectangle();
         intersection.x = Math.max(this.x, other.x);
         intersection.y = Math.max(this.y, other.y);
-        intersection.width = Math.min(this.x + width, other.x + width) - intersection.x;
-        intersection.height = Math.min(this.y + height, other.y + height) - intersection.y;
+        intersection.width = Math.min(this.x + this.width, other.x + other.width) - intersection.x;
+        intersection.height = Math.min(this.y + this.height, other.y + other.height) - intersection.y;
         return intersection;
-
-        }
     }
 
     public Rectangle union(Rectangle other) {
         Rectangle union = new Rectangle();
         union.x = Math.min(this.x, other.x);
         union.y = Math.min(this.x, other.x);
-        union.width = Math.max(this.x + width, other.x + width) - union.x;
-        union.height = Math.max(this.y + height, other.y + height) - union.height;
+        union.width = Math.max(this.x + this.width, other.x + other.width) - union.x;
+        union.height = Math.max(this.y + this.height, other.y + other.height) - union.height;
         return union;
 
     }
