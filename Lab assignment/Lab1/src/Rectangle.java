@@ -9,7 +9,7 @@ public class Rectangle {
     }
 
     Rectangle(int x, int y, int w, int h) {
-        if(w <= 0 || h <= 0) {
+        if (w <= 0 || h <= 0) {
             throw new IllegalArgumentException("width or height of the rectangle must be positive integer!");
         }
 
@@ -40,15 +40,26 @@ public class Rectangle {
     public Rectangle union(Rectangle other) {
         Rectangle union = new Rectangle();
         union.x = Math.min(this.x, other.x);
-        union.y = Math.min(this.x, other.x);
+        union.y = Math.min(this.y, other.y);
         union.width = Math.max(this.x + this.width, other.x + other.width) - union.x;
-        union.height = Math.max(this.y + this.height, other.y + other.height) - union.height;
+        union.height = Math.max(this.y + this.height, other.y + other.height) - union.y;
         return union;
 
     }
 
+    @Override
     public String toString() {
         return String.format("x: %d, y: %d, w: %d, h: %d", this.x, this.y, this.width, this.height);
     }
 
+    @Override
+    public boolean equals(Object other) {
+        if (this == other) return true;
+        if (other == null) return false;
+        if (other.getClass() != Rectangle.class) return false;
+
+        Rectangle otherRec = (Rectangle) other;
+        return (this.x == otherRec.x) && (this.y == otherRec.y)
+                && (this.width == otherRec.width) && (this.height == otherRec.height);
+    }
 }
