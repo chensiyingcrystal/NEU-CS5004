@@ -25,8 +25,12 @@ public class Rectangle {
      * @param h The rectangle's height
      */
     public Rectangle(int x, int y, int w, int h) {
-        if (w <= 0 || h <= 0) {
-            throw new IllegalArgumentException("width or height of the rectangle must be positive integer!");
+        if (w <= 0) {
+            throw new IllegalArgumentException("Width of the rectangle must be positive integer!");
+        }
+
+        if (h <= 0) {
+            throw new IllegalArgumentException("Height of the rectangle must be positive integer!");
         }
 
         this.x = x;

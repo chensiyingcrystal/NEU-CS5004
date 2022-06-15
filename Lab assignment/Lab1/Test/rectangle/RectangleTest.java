@@ -141,7 +141,7 @@ public class RectangleTest {
 
     /**
      * 2.12 Test Overlap method in the case of inclusion.
-     * Case1: test rectangle cover all of the target rectangle's area.
+     * Case1: test rectangle fully cover target rectangle's area.
      */
     @Test
     public void testOverlapInclusion1() {
@@ -150,7 +150,7 @@ public class RectangleTest {
 
     /**
      * 2.13 Test Overlap method in the case of inclusion.
-     * Case2: target rectangle cover all of the test rectangle's area
+     * Case2: target rectangle fully cover test rectangle's area
      */
     @Test
     public void testOverlapInclusion2() {
