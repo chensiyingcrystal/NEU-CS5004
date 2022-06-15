@@ -1,7 +1,7 @@
 /**
  * <h1>Rectangle</h1>
- * This program creates the rectangle object and determines if two rectangles overlap with each
- * other and their intersection and union area.
+ * This program creates the rectangle object, determines if two rectangles overlap with each
+ * other and calculate their intersection and union area.
  *
  * @author Siying Chen
  */
@@ -22,7 +22,7 @@ public class Rectangle {
      * @param x The x-coordinate of the lower_left point of the rectangle
      * @param y The y-coordinate of the lower_left point of the rectangle
      * @param w The rectangle's width
-     * @param h The rectangle;s height
+     * @param h The rectangle's height
      */
     public Rectangle(int x, int y, int w, int h) {
         if (w <= 0 || h <= 0) {
