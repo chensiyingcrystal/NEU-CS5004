@@ -249,5 +249,4 @@ public class RectangleTest {
     public void testString() {
         assertEquals("x: 0, y: 0, w: 6, h: 8", testRec.toString());
     }
-
 }
