@@ -23,6 +23,7 @@ public class RectangleTest {
     }
 
     /**
+     * 1.1 Test constructor
      * Test expected exception thrown when creating an invalid rectangle with negative width.
      */
     @Test(expected = IllegalArgumentException.class)
@@ -31,6 +32,7 @@ public class RectangleTest {
     }
 
     /**
+     * 1.2 Test constructor
      * Test expected exception thrown when creating an invalid rectangle with negative height.
      */
     @Test(expected = IllegalArgumentException.class)
@@ -39,7 +41,7 @@ public class RectangleTest {
     }
 
     /**
-     * Test overlap method when two rectangles do not overlap.
+     * 2.1 Test overlap method when two rectangles do not overlap.
      * Case1: target rectangle is on the right side of the test rectangle.
      */
     @Test
@@ -48,7 +50,7 @@ public class RectangleTest {
     }
 
     /**
-     * Test overlap method when two rectangles do not overlap
+     * 2.2 Test overlap method when two rectangles do not overlap
      * Case2: target rectangle is on the left side of the test rectangle
      */
     @Test
@@ -57,7 +59,7 @@ public class RectangleTest {
     }
 
     /**
-     * Test overlap method when two rectangles do not overlap.
+     * 2.3 Test overlap method when two rectangles do not overlap.
      * Case3: target rectangle is on the top of the test rectangle
      */
     @Test
@@ -66,7 +68,7 @@ public class RectangleTest {
     }
 
     /**
-     * Test overlap method when two rectangles do not overlap.
+     * 2.4 Test overlap method when two rectangles do not overlap.
      * Case4: target rectangle is at the bottom of the test rectangle.
      */
     @Test
@@ -75,7 +77,7 @@ public class RectangleTest {
     }
 
     /**
-     * Edge case: Test Overlap method when two rectangles touch each other.
+     * 2.5 Edge case: Test Overlap method when two rectangles touch each other.
      * Case1: two rectangles touches against the right side
      */
     @Test
@@ -84,7 +86,7 @@ public class RectangleTest {
     }
 
     /**
-     * Edge case: Test Overlap method when two rectangles touch each other.
+     * 2.6 Edge case: Test Overlap method when two rectangles touch each other.
      * Case2: two rectangles touches against the left side.
      */
     @Test
@@ -93,7 +95,7 @@ public class RectangleTest {
     }
 
     /**
-     * Edge case: Test Overlap method when two rectangles touch each other.
+     * 2.7 Edge case: Test Overlap method when two rectangles touch each other.
      * Case3: two rectangles touches against the top side.
      */
     @Test
@@ -102,7 +104,7 @@ public class RectangleTest {
     }
 
     /**
-     * Edge case: Test Overlap method when two rectangles touch each other.
+     * 2.8 Edge case: Test Overlap method when two rectangles touch each other.
      * Case4: two rectangles touches against the bottom side.
      */
     @Test
@@ -111,7 +113,7 @@ public class RectangleTest {
     }
 
     /**
-     * Test Overlap method in the case of overlapping.
+     * 2.9 Test Overlap method in the case of overlapping.
      * Case1: test rectangle overlap a small corner of the target rectangle.
      */
     @Test
@@ -120,7 +122,7 @@ public class RectangleTest {
     }
 
     /**
-     * Test Overlap method in the case of overlapping.
+     * 2.10 Test Overlap method in the case of overlapping.
      * Case2: test rectangle overlap part of the target rectangle's width and cover all its height.
      */
     @Test
@@ -129,7 +131,7 @@ public class RectangleTest {
     }
 
     /**
-     * Test Overlap method in the case of overlapping.
+     * 2.11 Test Overlap method in the case of overlapping.
      * Case3: test rectangle overlap part of the target rectangle's height and cover all its width.
      */
     @Test
@@ -138,7 +140,7 @@ public class RectangleTest {
     }
 
     /**
-     * Test Overlap method in the case of inclusion.
+     * 2.12 Test Overlap method in the case of inclusion.
      * Case1: test rectangle cover all of the target rectangle's area.
      */
     @Test
@@ -147,7 +149,7 @@ public class RectangleTest {
     }
 
     /**
-     * Test Overlap method in the case of inclusion.
+     * 2.13 Test Overlap method in the case of inclusion.
      * Case2: target rectangle cover all of the test rectangle's area
      */
     @Test
@@ -156,7 +158,7 @@ public class RectangleTest {
     }
 
     /**
-     * Test intersect method when two rectangles do not overlap.
+     * 3.1 Test intersect method when two rectangles do not overlap.
      */
     @Test(expected = java.util.NoSuchElementException.class)
     public void testExpectedExceptionOfNonOverlappingCase() {
@@ -164,7 +166,7 @@ public class RectangleTest {
     }
 
     /**
-     * Test Intersect method in the case of overlapping
+     * 3.2 Test Intersect method in the case of overlapping
      * Case1: the test rectangle overlap a small corner of the target rectangle
      */
     @Test
@@ -174,7 +176,7 @@ public class RectangleTest {
     }
 
     /**
-     * Test Intersect method in the case of overlapping.
+     * 3.3 Test Intersect method in the case of overlapping.
      * Case2: test rectangle overlap part of the target rectangle's width and cover all its height
      */
     @Test
@@ -184,7 +186,7 @@ public class RectangleTest {
     }
 
     /**
-     * Test Intersect method in the case of overlapping.
+     * 3.4 Test Intersect method in the case of overlapping.
      * Case3: test rectangle overlap part of the target rectangle's height and cover all its width.
      */
     @Test
@@ -194,8 +196,8 @@ public class RectangleTest {
     }
 
     /**
-     * Test Intersect method in the case of inclusion.
-     * Case1: test rectangle cover all of the target rectangle's area.
+     * 3.5 Test Intersect method in the case of inclusion.
+     * Case1: test rectangle fully cover the target rectangle's area.
      */
     @Test
     public void testIntersectUnderInclusion1() {
@@ -204,8 +206,8 @@ public class RectangleTest {
     }
 
     /**
-     * Test Overlap method in the case of inclusion.
-     * Case2: target rectangle cover all of the test rectangle's area.
+     * 3.6 Test Intersect method in the case of inclusion.
+     * Case2: target rectangle fully cover test rectangle's area.
      */
     @Test
     public void testIntersectUnderInclusion2() {
@@ -214,7 +216,7 @@ public class RectangleTest {
     }
 
     /**
-     * Test Union method in the case of non-overlapping.
+     * 4.1 Test Union method in the case of non-overlapping.
      */
     @Test
     public void testUnionUnderNonOverlapping() {
@@ -223,7 +225,7 @@ public class RectangleTest {
     }
 
     /**
-     * Test Union method in the case of overlapping.
+     * 4.2 Test Union method in the case of overlapping.
      */
     @Test
     public void testUnionUnderOverlapping() {
@@ -232,7 +234,7 @@ public class RectangleTest {
     }
 
     /**
-     * Test Union method in the case of inclusion.
+     * 4.3 Test Union method in the case of inclusion.
      */
     @Test
     public void testUnionUnderInclusion() {
@@ -241,7 +243,7 @@ public class RectangleTest {
     }
 
     /**
-     * Test String method
+     * 5.1 Test String method
      */
     @Test
     public void testString() {

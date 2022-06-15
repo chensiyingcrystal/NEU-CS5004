@@ -59,12 +59,11 @@ public class Rectangle {
             throw new java.util.NoSuchElementException("The two rectangles have no intersection!");
         }
 
-        Rectangle intersection = new Rectangle();
-        intersection.x = Math.max(this.x, other.x);
-        intersection.y = Math.max(this.y, other.y);
-        intersection.width = Math.min(this.x + this.width, other.x + other.width) - intersection.x;
-        intersection.height = Math.min(this.y + this.height, other.y + other.height) - intersection.y;
-        return intersection;
+        int intersectionX = Math.max(this.x, other.x);
+        int intersectionY = Math.max(this.y, other.y);
+        int intersectionWidth = Math.min(this.x + this.width, other.x + other.width) - intersectionX;
+        int intersectionHeight = Math.min(this.y + this.height, other.y + other.height) - intersectionY;
+        return new Rectangle(intersectionX, intersectionY, intersectionWidth, intersectionHeight);
     }
 
     /**
@@ -80,9 +79,7 @@ public class Rectangle {
         int unionY = Math.min(this.y, other.y);
         int unionWidth = Math.max(this.x + this.width, other.x + other.width) - unionX;
         int unionHeight = Math.max(this.y + this.height, other.y + other.height) - unionY;
-        Rectangle union = new Rectangle(unionX, unionY, unionWidth, unionHeight);
-        return union;
-
+        return new Rectangle(unionX, unionY, unionWidth, unionHeight);
     }
 
     /**
@@ -95,7 +92,7 @@ public class Rectangle {
     }
 
     /**
-     * An override method of equals method.
+     * An override method of equals method for testing.
      * Compare two rectangles' attributes and if they all match, return true.
      *
      * @param other the rectangle object that need to be compared with this object.
