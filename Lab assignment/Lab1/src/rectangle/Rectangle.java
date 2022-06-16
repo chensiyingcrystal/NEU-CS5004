@@ -26,21 +26,17 @@ public class Rectangle {
      */
     public Rectangle(int x, int y, int w, int h) {
 
-       try {
-           if (w <= 0) {
+        if (w <= 0) {
             throw new IllegalArgumentException("Width of the rectangle must be positive integer!");
         }
-           if (h <= 0) {
+
+        if (h <= 0) {
             throw new IllegalArgumentException("Height of the rectangle must be positive integer!");
         }
            this.x = x;
            this.y = y;
            this.width = w;
            this.height = h;
-       }
-       catch (IllegalArgumentException e) {
-           System.out.println(e);
-       }
 
     }
 
