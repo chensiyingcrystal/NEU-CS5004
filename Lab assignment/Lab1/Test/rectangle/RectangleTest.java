@@ -6,7 +6,9 @@
 package rectangle;
 
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import static org.junit.Assert.assertEquals;
 
@@ -23,11 +25,22 @@ public class RectangleTest {
     }
 
     /**
-     * 1.1 Test constructor
+     * 1.1 Test constructor(add test that will work with valid input)
      * Test expected exception thrown when creating an invalid rectangle with negative width.
      */
     @Test(expected = IllegalArgumentException.class)
     public void testExpectedExceptionOfInvalidWidth() {
+        Rectangle invalidRec1 = new Rectangle(0, -1, -5, 5);
+    }
+
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
+
+    @Test
+    public void test1() {
+        thrown.expect(IllegalArgumentException.class);
+        thrown.expectMessage("Width of the rectangle must be positive integer!");
+
         Rectangle invalidRec1 = new Rectangle(0, -1, -5, 5);
     }
 
