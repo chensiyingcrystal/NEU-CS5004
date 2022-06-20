@@ -40,7 +40,7 @@ public class AutomaticTransmissionTest {
      */
     @Test(expected = IllegalArgumentException.class)
     public void testIfInvalidSpeedOrder() {
-        tt1 = new AutomaticTransmission(10, 20, 15, 40, 60);
+        tt1 = new AutomaticTransmission(10, 20, 60, 40, 50);
     }
 
     /**
@@ -79,6 +79,9 @@ public class AutomaticTransmissionTest {
         assertEquals(tt1.getGear(), 1);
     }
 
+    /**
+     * Test toString method
+     */
     @Test
     public void testToString() {
         assertEquals("Transmission (speed = 0, gear = 0)", tt1.toString());

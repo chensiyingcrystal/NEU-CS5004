@@ -24,7 +24,7 @@ public class AutomaticTransmission implements Transmission{
      */
     public AutomaticTransmission(int speedThreshold1, int speedThreshold2, int speedThreshold3,
                                  int speedThreshold4, int speedThreshold5) throws IllegalArgumentException {
-        if (speedThreshold1 < 0 || speedThreshold2 < 0 || speedThreshold3 < 0 || speedThreshold4 < 0 || speedThreshold5 < 0) {
+        if (speedThreshold1 <= 0 || speedThreshold2 <= 0 || speedThreshold3 <= 0 || speedThreshold4 <= 0 || speedThreshold5 <= 0) {
             throw new IllegalArgumentException("Speed cannot be negative number!");
         }
 
@@ -50,19 +50,19 @@ public class AutomaticTransmission implements Transmission{
         if (this.currSpeed == 0) {
             this.currGear = 0;
         }
-        else if (this.currSpeed <= this.speedThreshold1) {
+        else if (this.currSpeed < this.speedThreshold1) {
             this.currGear = 1;
         }
-        else if (this.currSpeed <= this.speedThreshold2) {
+        else if (this.currSpeed < this.speedThreshold2) {
             this.currGear = 2;
         }
-        else if (this.currSpeed <= this.speedThreshold3) {
+        else if (this.currSpeed < this.speedThreshold3) {
             this.currGear = 3;
         }
-        else if (this.currSpeed <= this.speedThreshold4) {
+        else if (this.currSpeed < this.speedThreshold4) {
             this.currGear = 4;
         }
-        else if (this.currSpeed <= this.speedThreshold5) {
+        else if (this.currSpeed < this.speedThreshold5) {
             this.currGear = 5;
         }
         else {
