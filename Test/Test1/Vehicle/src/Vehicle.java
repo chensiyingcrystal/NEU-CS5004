@@ -1,3 +1,12 @@
 public class Vehicle {
-    int maxSpeed = 120;
+    int maxSpeed;
+
+    public Vehicle() {
+        this.maxSpeed = 100;
+
+    }
+
+    public Vehicle(int maxSpeed) {
+        this.maxSpeed = maxSpeed;
+    }
 }
