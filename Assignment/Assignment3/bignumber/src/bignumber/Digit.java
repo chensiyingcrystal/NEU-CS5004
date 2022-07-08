@@ -1,18 +1,18 @@
 package bignumber;
 
 public class Digit {
-    protected int val;
+    protected char val;
     protected Digit next;
 
-    public Digit(int val) {
-        if (val < 0 || val > 9) {
+    public Digit(char val) {
+        if (!Character.isDigit(val) || val < '0' || val > '9') {
             throw new IllegalArgumentException("value is invalid");
         }
         this.val = val;
         this.next = null;
     }
 
-    public Digit(int val, Digit next) {
+    public Digit(char val, Digit next) {
         this.val = val;
         this.next = next;
     }

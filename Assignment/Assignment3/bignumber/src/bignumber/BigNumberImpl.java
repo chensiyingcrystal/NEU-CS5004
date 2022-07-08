@@ -4,11 +4,29 @@ public class BigNumberImpl implements BigNumber {
     private Digit head;
 
     public BigNumberImpl() {
-        this.head = new Digit(0);
+        this.head = new Digit('0');
     }
 
     public BigNumberImpl(Digit head) {
         this.head = head;
+    }
+
+    public BigNumberImpl(String s) {
+        if (!Character.isDigit(s.charAt(0)) || (s.charAt(0) == '0' && s.length() != 1)) {
+            throw new IllegalArgumentException("Not valid number representation!");
+        }
+
+        this.head = new Digit(s.charAt(0));
+        Digit temp = this.head;
+
+        for (int i = 1; i < s.length(); i++) {
+            if (!Character.isDigit(s.charAt(i))) {
+                throw new IllegalArgumentException("Not valid number representation!");
+            }
+
+            temp.next = new Digit(s.charAt(i));
+            temp = temp.next;
+        }
     }
 
     @Override
@@ -34,15 +52,15 @@ public class BigNumberImpl implements BigNumber {
     @Override
     public BigNumber shiftLeft(int shifts) {
         if (shifts >= 0) {
-            if (this.head.val == 0) return this;
+            if (this.head.val == '0') return this;
             Digit last = findLastDigit();
             while (shifts-- > 0) {
-                last.next = new Digit(0);
+                last.next = new Digit('0');
                 last = last.next;
             }
         }
         else {
-            return shiftRight(-shifts);
+            return shiftRight(-1 * shifts);
         }
         return this;
 
@@ -51,36 +69,38 @@ public class BigNumberImpl implements BigNumber {
     @Override
     public BigNumber shiftRight(int shifts) {
         if (shifts == 0) {
-            throw new IllegalArgumentException("right shifts cannot be 0!");
-        }
-
-        if (shifts > this.length() && this.head.val != 0) {
-            throw new IllegalArgumentException("right shifts extend valid shifting times!");
-        }
-
-        if (this.head.val == 0 && shifts > 0) {
             return this;
         }
 
-        Digit dummy = new Digit(0);
+        if (this.head.val == '0' && shifts > 0) {
+            return this;
+        }
+
+        Digit dummy = new Digit('0');
         dummy.next = head;
 
         if (shifts > 0) {
             Digit slow = dummy, fast = dummy;
-            while (shifts-- > 0) {
+            while (shifts-- > 0 && fast != null) {
                 fast = fast.next;
             }
-            while (fast.next != null) {
+            while (fast != null && fast.next != null) {
                 fast = fast.next;
                 slow = slow.next;
             }
 
-            slow.next = slow == dummy? new Digit(0) : null;
+            if (slow == dummy) {
+                this.head = new Digit('0');
+            }
+            else {
+                slow.next = null;
+            }
+
         }
         else {
-            return shiftLeft(-shifts);
+            return shiftLeft(-1 * shifts);
         }
-        return new BigNumberImpl(dummy.next);
+        return this;
 
     }
 
@@ -106,11 +126,11 @@ public class BigNumberImpl implements BigNumber {
         this.reverseDigit(this.head);
 
         //add digit to it with a carry, continue adding carry to next digit until there is no carry
-        int carry = digit, sum = 0;
+        int carry = digit, sum;
         Digit temp = this.head, last = this.head;
         while (temp != null) {
-            sum = temp.val + carry;
-            temp.val = sum % 10;
+            sum = (temp.val - '0') + carry;
+            temp.val = (char)(sum % 10 + '0');
             carry = sum >= 10? 1 : 0;
             if (carry == 0) break;
             temp = temp.next;
@@ -118,7 +138,7 @@ public class BigNumberImpl implements BigNumber {
         }
 
         if (carry != 0) {
-            last.next = new Digit(carry);
+            last.next = new Digit((char)(carry + '0'));
         }
 
         //reverse back a "list"
@@ -127,7 +147,7 @@ public class BigNumberImpl implements BigNumber {
     }
 
     @Override
-    public int getDigitAt(int position) {
+    public char getDigitAt(int position) {
         if (position < 0 || position >= this.length()) {
             throw new IllegalArgumentException("Invalid position!");
         }
@@ -148,7 +168,7 @@ public class BigNumberImpl implements BigNumber {
         Digit p1 = this.head, p2 = other.head;
         while (p1 != null && p2 != null) {
             p2.val = p1.val;
-            p2.next = p1.next == null? null : new Digit(0);
+            p2.next = p1.next == null? null : new Digit('0');
             p1 = p1.next;
             p2 = p2.next;
         }
@@ -161,27 +181,28 @@ public class BigNumberImpl implements BigNumber {
         //reverse two numbers
         this.reverseDigit(this.head);
         BigNumberImpl other2 = (BigNumberImpl) other;
+        if (other2.head.val == '0') return this;
         other2.reverseDigit(other2.head);
 
         //initialize sum and carry, continuing add and create digits until traverse through both number's digits
         Digit p1 = this.head, p2 = other2.head;
         int sum, carry = 0;
         BigNumberImpl ans = new BigNumberImpl();
-        Digit dummy = new Digit(0), p3 = dummy;
+        Digit dummy = new Digit('0'), p3 = dummy;
         dummy.next = ans.head;
 
         while (p1 != null || p2 != null) {
-            int v1 = p1 == null? 0 : p1.val;
-            int v2 = p2 == null? 0 : p2.val;
+            int v1 = p1 == null? 0 : p1.val - '0';
+            int v2 = p2 == null? 0 : p2.val - '0';
             sum = v1 + v2 + carry;
             carry = sum >= 10? 1 : 0;
-            p3.next = new Digit(sum % 10);
+            p3.next = new Digit((char)((sum % 10) + '0'));
             if (p1 != null) p1 = p1.next;
             if (p2 != null) p2 = p2.next;
             p3 = p3.next;
         }
 
-        if (carry != 0) p3.next = new Digit(carry);
+        if (carry != 0) p3.next = new Digit((char)(carry + '0'));
 
         //reverse added number
         ans.reverseDigit(dummy.next);
@@ -219,7 +240,7 @@ public class BigNumberImpl implements BigNumber {
         String ans = "";
         Digit temp = head;
         while (temp != null) {
-            ans += Integer.toString(temp.val);
+            ans += Character.toString(temp.val);
             temp = temp.next;
         }
         return ans;
