@@ -1,7 +1,12 @@
 package birds;
 
+
 public final class Hawks extends Prey {
-    public Hawks() {
+    AviaryCategory aviaryCategory;
+
+    public Hawks(String birdID) {
+        this.id = birdID;
+        this.aviaryCategory = AviaryCategory.Prey;
         this.type = "Hawks";
         this.specific_c = new String[] {"sharp, curved talons"};
         this.isExtinct = false;

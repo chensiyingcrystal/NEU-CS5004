@@ -1,7 +1,8 @@
 package birds;
 
 public class RoseRingParakeet extends Parrots {
-    public RoseRingParakeet() {
+    public RoseRingParakeet(String birdID) {
+        this.id = birdID;
         this.type = "Roseringparakeet";
         this.specific_c = new String[] {"rose colored ring"};
         this.isExtinct = false;

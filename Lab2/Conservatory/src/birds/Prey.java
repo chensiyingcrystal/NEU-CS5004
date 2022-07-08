@@ -1,5 +1,7 @@
 package birds;
 
+import java.util.ArrayList;
+
 abstract class Prey extends AbstractBirds {
     protected String[] specific_c;
     private static String[] SHARED_C = {"sharp hooked beaks", "visible nostrils"};
@@ -11,7 +13,7 @@ abstract class Prey extends AbstractBirds {
         String[] added_c = new String[specificLen + sharedLen];
 
         System.arraycopy(SHARED_C, 0, added_c, 0, sharedLen);
-        System.arraycopy(specific_c, 0, added_c, sharedLen, specificLen + sharedLen);
+        System.arraycopy(specific_c, 0, added_c, sharedLen, specificLen);
         return added_c;
     }
 

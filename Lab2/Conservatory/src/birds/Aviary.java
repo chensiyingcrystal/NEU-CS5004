@@ -5,18 +5,14 @@ import java.util.ArrayList;
 public class Aviary {
     private String category;
     private int upperLimit;
-    private ArrayList<BirdType> birdList;
-
-    public Aviary() {
-        return;
-    }
+    private ArrayList<Birds> birdList;
 
     public Aviary(int upperLimit, String category) {
         this.category = category;
         this.upperLimit = upperLimit;
     }
 
-    public void addBird(BirdType birdName) throws Exception {
+    public void addBird(Birds birdName) throws Exception {
         if (this.isFull()) {
             throw new Exception("This aviary is full!");
         }
@@ -47,11 +43,11 @@ public class Aviary {
         this.category = category;
     }
 
-    public ArrayList<BirdType> getBirdList() {
+    public ArrayList<Birds> getBirdList() {
         return this.birdList;
     }
 
-    public void setBirdList(ArrayList<BirdType> birdList) {
+    public void setBirdList(ArrayList<Birds> birdList) {
         this.birdList = birdList;
     }
 

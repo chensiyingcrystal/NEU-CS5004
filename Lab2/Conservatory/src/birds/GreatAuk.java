@@ -1,8 +1,9 @@
 package birds;
 
 public class GreatAuk extends Shorebirds {
-    public GreatAuk() {
+    public GreatAuk(String birdID) {
         super("ocean");
+        this.id = birdID;
         this.type = "GreatAuk";
         this.specific_c = new String[] {""};
         this.isExtinct = false;

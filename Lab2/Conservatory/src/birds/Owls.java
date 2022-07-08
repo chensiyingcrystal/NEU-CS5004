@@ -3,7 +3,8 @@ package birds;
 public final class Owls extends AbstractBirds {
     private String[] characteristic;
 
-    public Owls() {
+    public Owls(String birdID) {
+        this.id = birdID;
         this.type = "Owls";
         this.characteristic = new String[] {"round, forward-looking eyes"};
         this.isExtinct = false;

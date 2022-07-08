@@ -1,10 +1,17 @@
 package birds;
 
 abstract class AbstractBirds implements Birds {
+    protected String id;
     protected String type;
     protected boolean isExtinct;
     protected int numberOfWings;
     protected Food[] food;
+
+
+    @Override
+    public String getID() {
+        return this.id;
+    }
 
     @Override
     public String getType() {

@@ -1,6 +1,7 @@
 package birds;
 
 public interface Birds {
+    String getID();
 
     String getType();
 
