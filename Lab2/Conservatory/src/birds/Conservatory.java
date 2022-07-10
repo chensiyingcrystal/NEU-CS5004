@@ -135,12 +135,24 @@ public class Conservatory {
 
     //Print a “map” that lists all the aviaries by location and the birds they house
     public void getMapOfAviaryAndBirdsInfo() {
+        for (Map.Entry<Aviary, Integer> entry : this.locationMap.entrySet()) {
+            Aviary currAviary = entry.getKey();
+            System.out.println("location:" + entry.getValue() + "; "
+                             + "aviary category" + currAviary.getCategory());
+            for (int i = 0; i < currAviary.getSize(); i++) {
+                Birds currBird = currAviary.getBirdList().get(i);
+                System.out.print("birdID:" + currBird.getID() + ", "+ "birdType" + currBird.getType() + "; ");
+            }
+            System.out.println("--------------------------------");
+        }
+
         return;
 
     }
 
     //Print an index that lists all birds in the conservatory in alphabetical order and their location
     public void printIndex() {
+        
         return;
 
     }
