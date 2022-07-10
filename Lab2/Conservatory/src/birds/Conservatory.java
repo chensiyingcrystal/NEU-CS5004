@@ -15,6 +15,11 @@ public class Conservatory {
     // create a conservatory with given arbitrary number of aviaries
     public Conservatory(int numOfAviaries) {
         this.numOfAviaries = numOfAviaries;
+        this.locationMap = new HashMap<>();
+        this.aviaryArrayList = new ArrayList<>();
+        this.foodMap = new HashMap<>();
+        this.locationMap.put(new Aviary(5, "Prey"), 0);
+        this.locationMap.put(new Aviary(3, "Parrots"), 1);
 
     }
 

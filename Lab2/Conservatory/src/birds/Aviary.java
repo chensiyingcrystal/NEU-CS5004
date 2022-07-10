@@ -8,12 +8,16 @@ public class Aviary {
     private ArrayList<Birds> birdList;
 
     public Aviary() {
+        this.category = "";
+        this.upperLimit = 0;
+        this.birdList = new ArrayList<>();
 
     }
 
     public Aviary(int upperLimit, String category) {
         this.category = category;
         this.upperLimit = upperLimit;
+        this.birdList = new ArrayList<>();
     }
 
     // changed to boolean type in to determine whether the bird is added to aviary successfully
