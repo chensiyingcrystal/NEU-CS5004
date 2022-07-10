@@ -7,16 +7,22 @@ public class Aviary {
     private int upperLimit;
     private ArrayList<Birds> birdList;
 
+    public Aviary() {
+
+    }
+
     public Aviary(int upperLimit, String category) {
         this.category = category;
         this.upperLimit = upperLimit;
     }
 
-    public void addBird(Birds birdName) throws Exception {
+    // changed to boolean type in to determine whether the bird is added to aviary successfully
+    public boolean addBird(Birds birdName) throws Exception {
         if (this.isFull()) {
             throw new Exception("This aviary is full!");
         }
         this.birdList.add(birdName);
+        return true;
     }
 
     private boolean isFull() {
@@ -50,5 +56,7 @@ public class Aviary {
     public void setBirdList(ArrayList<Birds> birdList) {
         this.birdList = birdList;
     }
+
+
 
 }
