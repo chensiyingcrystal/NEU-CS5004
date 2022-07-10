@@ -1,8 +1,6 @@
 package birds;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Map;
+import java.util.*;
 
 public class Conservatory {
     private int numOfAviaries = 0;
@@ -152,7 +150,23 @@ public class Conservatory {
 
     //Print an index that lists all birds in the conservatory in alphabetical order and their location
     public void printIndex() {
-        
+        //loop through each aviaries and add each bird in it to the map with their id and location
+        Map<String, Integer> map = new HashMap<>();
+        for (Map.Entry<Aviary, Integer> entry : this.locationMap.entrySet()) {
+            Integer currLocation = entry.getValue();
+            Aviary currAviary = entry.getKey();
+            for (int i = 0; i < currAviary.getSize(); i++) {
+                Birds currBird = currAviary.getBirdList().get(i);
+                String birdTypeAndID = "BirdType:" + currBird.getType() + ", " + "BirdID:" + currBird.getID();
+                map.put(birdTypeAndID, currLocation);
+            }
+        }
+        //instantiate a treemap from map and print out all birds information and their location
+        Map<String, Integer> treeMap = new TreeMap<>(map);
+        for (Map.Entry<String, Integer> entry : treeMap.entrySet()) {
+            System.out.println(entry.getKey() + " ,BirdLocation: " + entry.getValue());
+        }
+
         return;
 
     }
