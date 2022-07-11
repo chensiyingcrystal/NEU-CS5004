@@ -7,7 +7,7 @@ public class Duck extends WaterFowl{
         super("freshwater");
         this.id = birdID;
         this.aviaryCategory = AviaryCategory.Waterfowl;
-        this.type = "Duck";
+        this.type = BirdType.Duck;
         this.specific_c = new String[] {"waterproof feathers"};
         this.isExtinct = false;
         this.numberOfWings = 2;

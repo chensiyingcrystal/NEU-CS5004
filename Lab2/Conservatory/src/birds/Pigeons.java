@@ -5,7 +5,7 @@ public final class Pigeons extends AbstractBirds {
 
     public Pigeons(String birdID) {
         this.id = birdID;
-        this.type = "Pigeons";
+        this.type = BirdType.Pigeons;
         this.characteristic = new String[] {"gentle, plump, small-billed birds"};
         this.isExtinct = false;
         this.numberOfWings = 2;

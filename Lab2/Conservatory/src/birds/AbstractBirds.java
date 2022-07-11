@@ -2,7 +2,7 @@ package birds;
 
 abstract class AbstractBirds implements Birds {
     protected String id;
-    protected String type;
+    protected BirdType type;
     protected boolean isExtinct;
     protected int numberOfWings;
     protected Food[] food;
@@ -14,9 +14,7 @@ abstract class AbstractBirds implements Birds {
     }
 
     @Override
-    public String getType() {
-        return this.type;
-    }
+    public BirdType getBirdType() { return this.type;}
 
     @Override
     public boolean isExtinct() {

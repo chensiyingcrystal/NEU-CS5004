@@ -6,7 +6,7 @@ public class Moas extends Flightless{
     public Moas(String birdID) {
         this.id = birdID;
         this.aviaryCategory = AviaryCategory.Flightless;
-        this.type = "Moas";
+        this.type = BirdType.Moas;
         this.specific_c = new String[] {"small head", "long leg"};
         this.isExtinct = true;
         this.numberOfWings = 2;

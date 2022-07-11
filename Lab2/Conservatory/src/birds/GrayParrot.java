@@ -3,7 +3,7 @@ package birds;
 public class GrayParrot extends Parrots{
     public GrayParrot(String birdID) {
         this.id = birdID;
-        this.type = "GrayParrot";
+        this.type = BirdType.GrayParrot;
         this.specific_c = new String[]{"sweet and affectionate", "quite sociable"};
         this.isExtinct = false;
         this.numberOfWings = 2;

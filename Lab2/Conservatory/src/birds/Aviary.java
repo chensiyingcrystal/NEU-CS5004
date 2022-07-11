@@ -23,7 +23,7 @@ public class Aviary {
     // changed to boolean type in to determine whether the bird is added to aviary successfully
     public boolean addBird(Birds birdName) throws Exception {
         if (this.isFull()) {
-            throw new Exception("This aviary is full!");
+            return false;
         }
         this.birdList.add(birdName);
         return true;

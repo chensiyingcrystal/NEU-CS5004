@@ -6,7 +6,7 @@ public class Eagles extends Prey{
     public Eagles(String birdID) {
         this.id = birdID;
         this.aviaryCategory = AviaryCategory.Prey;
-        this.type = "Eagles";
+        this.type = BirdType.Eagles;
         this.specific_c = new String[] {"powerful vision"};
         this.isExtinct = false;
         this.numberOfWings = 2;

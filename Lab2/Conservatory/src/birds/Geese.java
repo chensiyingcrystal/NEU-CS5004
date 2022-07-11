@@ -7,7 +7,7 @@ public class Geese extends WaterFowl{
         super("freshwater");
         this.id = birdID;
         this.aviaryCategory = AviaryCategory.Waterfowl;
-        this.type = "Geese";
+        this.type = BirdType.Geese;
         this.specific_c = new String[] {"long foot"};
         this.isExtinct = false;
         this.numberOfWings = 2;

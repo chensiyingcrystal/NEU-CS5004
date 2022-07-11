@@ -1,10 +1,10 @@
 package birds;
 
-public class HomePuffin extends Shorebirds{
-    public HomePuffin(String birdID) {
+public class HornedPuffin extends Shorebirds{
+    public HornedPuffin(String birdID) {
         super("ocean");
         this.id = birdID;
-        this.type = "HomePuffin";
+        this.type = BirdType.HornedPuffin;
         this.specific_c = new String[] {"short and stocky diving sea bird"};
         this.isExtinct = false;
         this.numberOfWings = 2;
