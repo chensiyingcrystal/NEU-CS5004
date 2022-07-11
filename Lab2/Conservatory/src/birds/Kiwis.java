@@ -6,7 +6,7 @@ public class Kiwis extends Flightless{
     public Kiwis(String birdID) {
         this.id = birdID;
         this.aviaryCategory = AviaryCategory.Flightless;
-        this.type = "Kiwis";
+        this.type = BirdType.Kiwis;
         this.specific_c = new String[] {"tiny wings", "loose feather"};
         this.isExtinct = true;
         this.numberOfWings = 2;

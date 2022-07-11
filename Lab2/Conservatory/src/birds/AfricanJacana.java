@@ -4,7 +4,7 @@ public class AfricanJacana extends Shorebirds{
     public AfricanJacana(String birdID) {
         super("wetlands");
         this.id = birdID;
-        this.type = "AfricanJacana";
+        this.type = BirdType.AfricanJacana;
         this.specific_c = new String[] {"chestnut, white, and black waterbird"};
         this.isExtinct = false;
         this.numberOfWings = 2;
