@@ -13,6 +13,7 @@ public class Conservatory {
     private Map<Aviary,Map<Food, Integer>> foodMap;
     private Map<Aviary, Integer> locationMap;
     private Map<AviaryCategory,ArrayList<BirdType>> aviaryCategory;
+    private boolean stopAdding = false;
 
 
     private void initializeAviaryCategory() {
@@ -48,6 +49,10 @@ public class Conservatory {
 
     }
 
+    // traverse the aviaryArrayList, if target category is found and the found aviary
+    // has not reached to its capacity, return the found aviary object.
+    // If found one is full, skip and look for the next target
+    // if nothing found, return null
    private Aviary isCategoryExisted(String category) {
        for (Aviary aviary : aviaryArrayList) {
            if (aviary.getCategory() == category) {
@@ -61,6 +66,10 @@ public class Conservatory {
 
     //Add and Assign a bird to an aviary in the conservatory. Assignments must follow some criteria.
     public void assignBirds(Birds bird) throws Exception {
+        // if conservatory is full and the last aviary is full, stop.
+        if (stopAdding) {
+            return;
+        }
         //check if bird is extinct
         if (bird.isExtinct()) {
             throw new IllegalStateException("Extinct bird cannot be added to conservatory.");
@@ -76,10 +85,15 @@ public class Conservatory {
                 numOfBirds++;
                 addFood(tempAviary, bird);
             }
-        } else {
-            if (isFullConservatory()) {
+            // if conservatory is full and the last aviary is full,
+            // set the flag stopAdding to be true, the loop will stop
+            // at the beginning of the next iteration
+            if (isFullConservatory() && tempAviary.getSize()==5) {
                 System.out.println(("Conservatory is Full"));
-            } else {
+                stopAdding = true;
+            }
+            // if the aviary is full, create a new aviary with given category
+        } else {
                 tempAviary = new Aviary(5, existingBirdCate);
                 aviaryArrayList.add(tempAviary);
                 numOfBirds++;
@@ -87,10 +101,11 @@ public class Conservatory {
                 locationMap.put(tempAviary, numOfAviaries);
                 tempAviary.addBird(bird);
                 addFood(tempAviary, bird);
-            }
+
         }
     }
 
+    // add food to food map
     public void addFood(Aviary aviary, Birds bird) {
         foodMap.computeIfAbsent(aviary, k -> new HashMap<>());
         for (int k = 0; k < bird.getFood().length; ++ k) {
@@ -99,7 +114,8 @@ public class Conservatory {
         }
     }
 
-    // get one of four category that the bird belongs to.
+    // get one of four category that the bird belongs to, if found target category, return it
+    // otherwise, return null
     private String getCategory(Birds bird) {
         String newBirdCate = null;
         for (Map.Entry<AviaryCategory,ArrayList<BirdType>> entry : aviaryCategory.entrySet()) {
@@ -110,7 +126,6 @@ public class Conservatory {
                 }
             }
         }
-
         return null;
     }
 
@@ -125,15 +140,15 @@ public class Conservatory {
 
     // Have a guest look up which aviary a bird is in
     // return aviary location
-    public int getAviaryOfBirds(Birds bird) {
+    public int getAviaryOfBirds(Birds bird, String birdName) {
         //first find aviary according to birdCategory
         for (Aviary tempAviary : aviaryArrayList) {
             // if a correct type of existed aviary is found
-            if (tempAviary.getCategory().equals(valueOf(bird.getBirdType()))) {
+            if (tempAviary.getCategory().equals(getCategory(bird))) {
                 // loop through birdList in this existing aviary to find the bird
                 for (int j = 0; j < tempAviary.getBirdList().size(); ++j) {
-                    if (bird.getID().equals(valueOf(tempAviary.getBirdList().get(j)))) {
-                        System.out.println(bird.getID() + " is at" + locationMap.get(tempAviary));
+                    if (birdName.equals(tempAviary.getBirdList().get(j).getID())) {
+                        System.out.println(birdName + " is at Aviary " + locationMap.get(tempAviary));
                         return locationMap.get(tempAviary); // or return i ??
                     }
                 }
@@ -147,11 +162,11 @@ public class Conservatory {
 
     //Print a sign for any given aviary that gives a description of the birds it houses and any interesting information that it may have about that animal.
     public void printSignForAviary(int aviaryIndex) {
-        //
+        aviaryIndex -= 1;
         if (aviaryIndex > aviaryArrayList.size()) {
             throw new IllegalStateException("At given location, no aviary found.");
         }
-
+        System.out.println("Printing out information of all birds in aviary " + (aviaryIndex + 1));
         Aviary tempAviary = aviaryArrayList.get(aviaryIndex);
         for (int i = 0; i < tempAviary.getSize(); ++ i) {
             Birds bird = tempAviary.getBirdList().get(i);
