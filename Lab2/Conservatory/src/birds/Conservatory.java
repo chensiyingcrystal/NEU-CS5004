@@ -183,9 +183,11 @@ public class Conservatory {
 
     //Print a “map” that lists all the aviaries by location and the birds they house
     public void getMapOfAviaryAndBirdsInfo() {
+        System.out.println("Printing a map for all aviaries");
+        System.out.println("--------------------------------");
         for (Map.Entry<Aviary, Integer> entry : this.locationMap.entrySet()) {
             Aviary currAviary = entry.getKey();
-            System.out.println("location:" + entry.getValue() + "; "
+            System.out.println("location:" + entry.getValue() + ", "
                              + "aviary category: " + currAviary.getCategory());
             for (int i = 0; i < currAviary.getSize(); i++) {
                 Birds currBird = currAviary.getBirdList().get(i);
@@ -193,25 +195,28 @@ public class Conservatory {
             }
             System.out.println("--------------------------------");
         }
+        System.out.println("total number of Aviaries: " + this.getNumOfAviaries());
+        System.out.println("total number of birds: " + this.getNumOfBirds());
     }
 
     //Print an index that lists all birds in the conservatory in alphabetical order and their location
     public void printIndex() {
-        //loop through each aviary and add each bird in it to the map with their id and location
-        Map<String, Integer> map = new HashMap<>();
+        List<String> birdInfoList = new ArrayList<String>();
         for (Map.Entry<Aviary, Integer> entry : this.locationMap.entrySet()) {
             Integer currLocation = entry.getValue();
             Aviary currAviary = entry.getKey();
             for (int i = 0; i < currAviary.getSize(); i++) {
                 Birds currBird = currAviary.getBirdList().get(i);
-                String birdTypeAndID = "BirdType:" + currBird.getBirdType() + ", " + "BirdID:" + currBird.getID();
-                map.put(birdTypeAndID, currLocation);
+                String birdTypeAndID = "BirdID:" + currBird.getID() + "| " + "BirdType:" + currBird.getBirdType()
+                        + "| " + "Bird Location" + currLocation;
+                birdInfoList.add(birdTypeAndID);
             }
         }
-        //instantiate a treemap from map and print out all birds information and their location
-        Map<String, Integer> treeMap = new TreeMap<>(map);
-        for (Map.Entry<String, Integer> entry : treeMap.entrySet()) {
-            System.out.println(entry.getKey() + " ,BirdLocation: " + entry.getValue());
+        //convert string list to string array in alphabetic order and print them out
+        String[] birdInfoArray = birdInfoList.toArray(new String[0]);
+        System.out.println("Printing index for all birds");
+        for (String str : birdInfoArray) {
+            System.out.println(str);
         }
     }
 
