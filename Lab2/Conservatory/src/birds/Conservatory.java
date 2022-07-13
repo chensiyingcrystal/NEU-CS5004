@@ -185,17 +185,15 @@ public class Conservatory {
     }
 
     //Print a sign for any given aviary that gives a description of the birds it houses and any interesting information that it may have about that animal.
-    public void printSignForAviary(int aviaryIndex){
-        //check if the index passed in is valid or not
-        if (aviaryIndex < 1) {
+    public void printSignForAviary(int aviaryIndex) {
+        aviaryIndex -= 1;
+        if (aviaryIndex < 0) {
             throw new IllegalArgumentException("Invalid aviary index(staring from 1)");
         }
 
-        if (aviaryIndex > aviaryArrayList.size()) {
-            throw new IllegalArgumentException("At given location, no aviary found. Index out of boundary.");
+        if (aviaryIndex >= aviaryArrayList.size()) {
+            throw new IllegalStateException("At given location, no aviary found. Index out of boundary.");
         }
-        aviaryIndex -= 1;
-        //find aviary from aviaryArrayList with given index and traverse through this aviary's bird list and print out each bird's detailed information
         System.out.println("Printing out information of all birds in aviary " + (aviaryIndex + 1));
         Aviary tempAviary = aviaryArrayList.get(aviaryIndex);
         for (int i = 0; i < tempAviary.getSize(); ++ i) {
@@ -215,7 +213,6 @@ public class Conservatory {
     public void getMapOfAviaryAndBirdsInfo() {
         System.out.println("Printing a map for all aviaries");
         System.out.println("--------------------------------");
-        //traverse through location map of the conservatory; key: aviary, value: location, loop through aviary's bird list and print out their information
         for (Map.Entry<Aviary, Integer> entry : this.locationMap.entrySet()) {
             Aviary currAviary = entry.getKey();
             System.out.println("location:" + entry.getValue() + ", "
@@ -242,7 +239,7 @@ public class Conservatory {
                 birdInfoList.add(birdTypeAndID);
             }
         }
-        //convert array list to array and sort it using function we defined.
+        //convert string list to string array in alphabetic order and print them out
         String[] birdInfoArray = birdInfoList.toArray(new String[0]);
         Arrays.sort(birdInfoArray, (String a, String b) -> {
             int n = Math.min(a.length(), b.length());
@@ -258,7 +255,6 @@ public class Conservatory {
             return a1.length() - b1.length();
         });
 
-        //print out bird id and their locations
         System.out.println("Printing index for all birds");
         for (String str : birdInfoArray) {
             System.out.println(str);
@@ -274,19 +270,12 @@ public class Conservatory {
     }
 
 
+
     public int getNumOfAviaries() {
         return this.numOfAviaries = locationMap.size();
     }
 
     public void setNumOfAviaries(int numOfAviaries) {
-        if (numOfAviaries < 0 || numOfAviaries > 20) {
-            throw new IllegalArgumentException("number of aviaries must be in the range from 0 to 20 including!");
-        }
-
-        if (numOfAviaries < this.getNumOfAviaries()) {
-            throw new IllegalArgumentException("number of aviaries less than current size");
-        }
-
         this.numOfAviaries = numOfAviaries;
     }
 
