@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>/Users/jasonzhang/Documents/Align_Course/Summer2022/CS5004_Java/group_work/NEU-CS5004/Lab2/Conservatory/src/birds</OriginalElement>
+  <nodes>
+    <node x="2213.25" y="893.5">birds.Moas</node>
+    <node x="443.0" y="1172.0">birds.BirdType</node>
+    <node x="486.0000000000001" y="893.5">birds.Osprey</node>
+    <node x="1108.75" y="1052.0">birds.Swan</node>
+    <node x="2458.75" y="613.0">birds.Flightless</node>
+    <node x="890.0" y="1172.0">birds.Aviary</node>
+    <node x="2456.25" y="893.5">birds.Kiwis</node>
+    <node x="675.0" y="1172.0">birds.Food</node>
+    <node x="1248.5" y="256.0">birds.AbstractBirds</node>
+    <node x="1177.0" y="1172.0">birds.AviaryCategory</node>
+    <node x="1055.530701754386" y="635.0">birds.NearWaterBirds</node>
+    <node x="1744.25" y="580.0">birds.Parrots</node>
+    <node x="755.7500000000001" y="1063.5">birds.GreatAuk</node>
+    <node x="1755.25" y="905.0">birds.RoseRingParakeet</node>
+    <node x="1443.0" y="1172.0">birds.Main</node>
+    <node x="921.7500000000001" y="1063.5">birds.HornedPuffin</node>
+    <node x="730.7500000000001" y="860.0">birds.Shorebirds</node>
+    <node x="232.53070175438597" y="613.0">birds.Prey</node>
+    <node x="1351.75" y="1052.0">birds.Duck</node>
+    <node x="0.0" y="1172.0">birds.Conservatory</node>
+    <node x="0.0" y="893.5">birds.Eagles</node>
+    <node x="1365.25" y="860.0">birds.WaterFowl</node>
+    <node x="766.5043859649123" y="624.0">birds.Owls</node>
+    <node x="2699.25" y="893.5">birds.Emus</node>
+    <node x="2099.0" y="624.0">birds.Pigeons</node>
+    <node x="1581.25" y="905.0">birds.GrayParrot</node>
+    <node x="565.7500000000001" y="1063.5">birds.AfricanJacana</node>
+    <node x="243.0" y="893.5">birds.Hawks</node>
+    <node x="1971.25" y="905.0">birds.SulfurCrestedCockatoo</node>
+    <node x="1594.75" y="1052.0">birds.Geese</node>
+    <node x="1232.0" y="0.0">birds.Birds</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="birds.WaterFowl" target="birds.NearWaterBirds" relationship="GENERALIZATION">
+      <point x="0.0" y="-71.0" />
+      <point x="1463.25" y="835.0" />
+      <point x="1164.530701754386" y="835.0" />
+      <point x="0.0" y="60.0" />
+    </edge>
+    <edge source="birds.AbstractBirds" target="birds.Birds" relationship="REALIZATION">
+      <point x="0.0" y="-137.0" />
+      <point x="0.0" y="103.0" />
+    </edge>
+    <edge source="birds.RoseRingParakeet" target="birds.Parrots" relationship="GENERALIZATION">
+      <point x="0.0" y="-26.0" />
+      <point x="0.0" y="115.0" />
+    </edge>
+    <edge source="birds.Duck" target="birds.WaterFowl" relationship="GENERALIZATION">
+      <point x="0.0" y="-37.5" />
+      <point x="0.0" y="71.0" />
+    </edge>
+    <edge source="birds.Parrots" target="birds.AbstractBirds" relationship="GENERALIZATION">
+      <point x="0.0" y="-115.0" />
+      <point x="1853.25" y="555.0" />
+      <point x="1341.0" y="555.0" />
+      <point x="0.0" y="137.0" />
+    </edge>
+    <edge source="birds.Moas" target="birds.Flightless" relationship="GENERALIZATION">
+      <point x="0.0" y="-37.5" />
+      <point x="2324.75" y="835.0" />
+      <point x="2567.75" y="835.0" />
+      <point x="0.0" y="82.0" />
+    </edge>
+    <edge source="birds.Shorebirds" target="birds.NearWaterBirds" relationship="GENERALIZATION">
+      <point x="0.0" y="-71.0" />
+      <point x="828.7500000000001" y="835.0" />
+      <point x="1164.530701754386" y="835.0" />
+      <point x="0.0" y="60.0" />
+    </edge>
+    <edge source="birds.GreatAuk" target="birds.Shorebirds" relationship="GENERALIZATION">
+      <point x="0.0" y="-26.0" />
+      <point x="0.0" y="71.0" />
+    </edge>
+    <edge source="birds.Flightless" target="birds.AbstractBirds" relationship="GENERALIZATION">
+      <point x="0.0" y="-82.0" />
+      <point x="2567.75" y="555.0" />
+      <point x="1341.0" y="555.0" />
+      <point x="0.0" y="137.0" />
+    </edge>
+    <edge source="birds.Swan" target="birds.WaterFowl" relationship="GENERALIZATION">
+      <point x="0.0" y="-37.5" />
+      <point x="1220.25" y="1027.0" />
+      <point x="1463.25" y="1027.0" />
+      <point x="0.0" y="71.0" />
+    </edge>
+    <edge source="birds.HornedPuffin" target="birds.Shorebirds" relationship="GENERALIZATION">
+      <point x="1.1368683772161603E-13" y="-26.0" />
+      <point x="1005.2500000000002" y="1027.0" />
+      <point x="828.7500000000001" y="1027.0" />
+      <point x="0.0" y="71.0" />
+    </edge>
+    <edge source="birds.Eagles" target="birds.Prey" relationship="GENERALIZATION">
+      <point x="0.0" y="-37.5" />
+      <point x="111.5" y="835.0" />
+      <point x="341.530701754386" y="835.0" />
+      <point x="0.0" y="82.0" />
+    </edge>
+    <edge source="birds.Osprey" target="birds.Prey" relationship="GENERALIZATION">
+      <point x="0.0" y="-37.5" />
+      <point x="597.5000000000001" y="835.0" />
+      <point x="341.530701754386" y="835.0" />
+      <point x="0.0" y="82.0" />
+    </edge>
+    <edge source="birds.GrayParrot" target="birds.Parrots" relationship="GENERALIZATION">
+      <point x="0.0" y="-26.0" />
+      <point x="1658.25" y="835.0" />
+      <point x="1853.25" y="835.0" />
+      <point x="0.0" y="115.0" />
+    </edge>
+    <edge source="birds.NearWaterBirds" target="birds.AbstractBirds" relationship="GENERALIZATION">
+      <point x="0.0" y="-60.0" />
+      <point x="1164.530701754386" y="555.0" />
+      <point x="1341.0" y="555.0" />
+      <point x="0.0" y="137.0" />
+    </edge>
+    <edge source="birds.Pigeons" target="birds.AbstractBirds" relationship="GENERALIZATION">
+      <point x="0.0" y="-71.0" />
+      <point x="2210.5" y="555.0" />
+      <point x="1341.0" y="555.0" />
+      <point x="0.0" y="137.0" />
+    </edge>
+    <edge source="birds.Hawks" target="birds.Prey" relationship="GENERALIZATION">
+      <point x="0.0" y="-37.5" />
+      <point x="354.5" y="835.0" />
+      <point x="341.530701754386" y="835.0" />
+      <point x="0.0" y="82.0" />
+    </edge>
+    <edge source="birds.Prey" target="birds.AbstractBirds" relationship="GENERALIZATION">
+      <point x="0.0" y="-82.0" />
+      <point x="341.530701754386" y="555.0" />
+      <point x="1341.0" y="555.0" />
+      <point x="0.0" y="137.0" />
+    </edge>
+    <edge source="birds.AfricanJacana" target="birds.Shorebirds" relationship="GENERALIZATION">
+      <point x="0.0" y="-26.0" />
+      <point x="650.7500000000001" y="1027.0" />
+      <point x="828.7500000000001" y="1027.0" />
+      <point x="0.0" y="71.0" />
+    </edge>
+    <edge source="birds.Geese" target="birds.WaterFowl" relationship="GENERALIZATION">
+      <point x="0.0" y="-37.5" />
+      <point x="1706.25" y="1027.0" />
+      <point x="1463.25" y="1027.0" />
+      <point x="0.0" y="71.0" />
+    </edge>
+    <edge source="birds.Emus" target="birds.Flightless" relationship="GENERALIZATION">
+      <point x="0.0" y="-37.5" />
+      <point x="2810.75" y="835.0" />
+      <point x="2567.75" y="835.0" />
+      <point x="0.0" y="82.0" />
+    </edge>
+    <edge source="birds.SulfurCrestedCockatoo" target="birds.Parrots" relationship="GENERALIZATION">
+      <point x="0.0" y="-26.0" />
+      <point x="2082.25" y="835.0" />
+      <point x="1853.25" y="835.0" />
+      <point x="0.0" y="115.0" />
+    </edge>
+    <edge source="birds.Owls" target="birds.AbstractBirds" relationship="GENERALIZATION">
+      <point x="0.0" y="-71.0" />
+      <point x="875.5043859649123" y="555.0" />
+      <point x="1341.0" y="555.0" />
+      <point x="0.0" y="137.0" />
+    </edge>
+    <edge source="birds.Kiwis" target="birds.Flightless" relationship="GENERALIZATION">
+      <point x="0.0" y="-37.5" />
+      <point x="0.0" y="82.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="0.37514450867052024" showDependencies="false" x="1461.5" y="855.0" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Constructors</Category>
+    <Category>Fields</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
