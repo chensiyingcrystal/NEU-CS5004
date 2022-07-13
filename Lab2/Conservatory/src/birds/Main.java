@@ -14,18 +14,22 @@ public class Main {
 
         Birds osprey1 = new Osprey("Osprey123");
         c1.assignBirds(osprey1);
-//        Birds owls = null;
-//        for (int i = 0; i < 100; ++i) {
-//            owls = new Owls("owl" + i);
-//            c1.assignBirds(owls);
-//        }
+
+        Birds owls = null;
+        for (int i = 0; i < 2; ++i) {
+            owls = new Owls("owl" + i);
+            c1.assignBirds(owls);
+        }
         c1.getMapOfAviaryAndBirdsInfo();
 
-//        c1.getAviaryOfBirds(owls, "owl1");
+        c1.getAviaryOfBirds(owls, "owl1");
 
         c1.printSignForAviary(2);// 1-indexed
 
         c1.printIndex();
+        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~");
+        c1.printFoodMap();
+        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~");
 
     }
 }

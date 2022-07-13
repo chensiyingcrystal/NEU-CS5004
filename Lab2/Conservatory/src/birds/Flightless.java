@@ -15,4 +15,15 @@ abstract class Flightless extends AbstractBirds{
         return added_c;
     }
 
+    @Override
+    public String getNameOfWaterBody() {
+        System.out.println(getBirdType() + " are not water bird.");
+        return null;
+    }
+
+    @Override
+    public String getFavoriteSaying() {
+        System.out.println(getBirdType() + " are not parrots.");
+        return null;
+    }
 }

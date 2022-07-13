@@ -4,7 +4,7 @@ abstract class Parrots extends AbstractBirds {
     protected String[] specific_c;
     private static String[] SHARED_C = {"short, curved beak", "intelligence and mimic sounds"};
     int numberOfWords;
-    String favoriteSaying;
+    protected String favoriteSaying;
 
     @Override
     public String[] getCharacteristic() {
@@ -22,8 +22,15 @@ abstract class Parrots extends AbstractBirds {
         return this.numberOfWords;
     }
 
-    String getFavoriteSaying() {
+    @Override
+    public String getFavoriteSaying() {
         return this.favoriteSaying;
+    }
+
+    @Override
+    public String getNameOfWaterBody() {
+        System.out.println(getBirdType() + " are not water bird.");
+        return null;
     }
 
 }

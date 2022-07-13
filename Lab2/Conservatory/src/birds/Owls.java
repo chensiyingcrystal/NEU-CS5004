@@ -16,4 +16,16 @@ public final class Owls extends AbstractBirds {
     public String[] getCharacteristic() {
         return this.characteristic;
     }
+
+    @Override
+    public String getNameOfWaterBody() {
+        System.out.println(getBirdType() + " are not water bird.");
+        return null;
+    }
+
+    @Override
+    public String getFavoriteSaying() {
+        System.out.println(getBirdType() + " are not parrots.");
+        return null;
+    }
 }
