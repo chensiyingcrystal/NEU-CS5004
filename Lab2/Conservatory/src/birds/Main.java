@@ -20,12 +20,31 @@ public class Main {
 //            c1.assignBirds(owls);
 //        }
         c1.getMapOfAviaryAndBirdsInfo();
+        System.out.println("~~~~~~~~~~~~~~~~~~");
+        System.out.println("total number of Aviaries: " + c1.getNumOfAviaries());
+        System.out.println("total number of birds: " + c1.getNumOfBirds());
+        System.out.println("~~~~~~~~~~~~~~~~~~");
+
+        c1.printFoodMap();
 
 //        c1.getAviaryOfBirds(owls, "owl1");
 
         c1.printSignForAviary(2);// 1-indexed
+//        c1.printIndex();
 
-        c1.printIndex();
+
+//        try {
+//            c1.assignBirds(hawk1);
+//
+//        }
+//        catch (IllegalStateException e) {
+//            System.out.println(e.toString());
+//        }
+//        catch (Exception e) {
+//            System.out.println(e.toString());
+//        }
+//
+//        c1.printIndex();
 
     }
 }

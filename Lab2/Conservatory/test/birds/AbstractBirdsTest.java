@@ -8,15 +8,19 @@ import java.util.Arrays;
 import static org.junit.Assert.*;
 
 public class AbstractBirdsTest{
-    Birds hawk1 = new Hawks("hawk1");
-    Birds owl1 = new Owls("owl1");
-    Birds roseRingParakeet1 = new RoseRingParakeet("roseRingParakeet1");
-    Birds greatAuk1 = new GreatAuk("greatAuk1");
-    Birds kiwis1 = new Kiwis("kiwis1");
+    Birds hawk1;
+    Birds owl1;
+    Birds roseRingParakeet1;
+    Birds greatAuk1;
+    Birds kiwis1;
 
     @Before
     public void setUp() throws Exception {
-
+        this.hawk1 = new Hawks("hawk1");
+        this.owl1 = new Owls("owl1");
+        this.roseRingParakeet1 = new RoseRingParakeet("roseRingParakeet1");
+        this.greatAuk1 = new GreatAuk("greatAuk1");
+        this.kiwis1 = new Kiwis("kiwis1");
     }
 
     @Test
@@ -38,7 +42,7 @@ public class AbstractBirdsTest{
     }
 
     @Test
-    public void getBirdType() {
+    public void testGetBirdType() {
         assertEquals(BirdType.Hawks, hawk1.getBirdType());
         assertEquals(BirdType.Owls, owl1.getBirdType());
         assertEquals(BirdType.RoseRingParakeet, roseRingParakeet1.getBirdType());
@@ -47,7 +51,7 @@ public class AbstractBirdsTest{
     }
 
     @Test
-    public void isExtinct() {
+    public void testIsExtinct() {
         assertFalse(hawk1.isExtinct());
         assertFalse(owl1.isExtinct());
         assertFalse(roseRingParakeet1.isExtinct());
@@ -56,7 +60,7 @@ public class AbstractBirdsTest{
     }
 
     @Test
-    public void getNumberOfWings() {
+    public void testGetNumberOfWings() {
         assertEquals(2, hawk1.getNumberOfWings());
         assertEquals(2, owl1.getNumberOfWings());
         assertEquals(2, roseRingParakeet1.getNumberOfWings());
@@ -65,12 +69,25 @@ public class AbstractBirdsTest{
     }
 
     @Test
-    public void getFood() {
+    public void testGetFood() {
         assertEquals(Arrays.toString(new String[]{String.valueOf(Food.smallMammals), String.valueOf(Food.insects)}), Arrays.toString(hawk1.getFood()));
         assertEquals(Arrays.toString(new String[]{String.valueOf(Food.fish), String.valueOf(Food.otherBirds), String.valueOf(Food.insects)}), Arrays.toString(owl1.getFood()));
         assertEquals(Arrays.toString(new String[]{String.valueOf(Food.smallMammals), String.valueOf(Food.insects)}), Arrays.toString(roseRingParakeet1.getFood()));
         assertEquals(Arrays.toString(new String[]{String.valueOf(Food.smallMammals), String.valueOf(Food.insects)}), Arrays.toString(greatAuk1.getFood()));
         assertEquals(Arrays.toString(new String[]{String.valueOf(Food.seeds), String.valueOf(Food.insects)}), Arrays.toString(kiwis1.getFood()));
 
+    }
+
+    @Test
+    public void testGetWaterBody() {
+        assertEquals("ocean", greatAuk1.getNameOfWaterBody());
+        assertNull(hawk1.getNameOfWaterBody());
+        assertNull(kiwis1.getNameOfWaterBody());
+    }
+
+    @Test
+    public void testGetFavoriteSaying() {
+        assertEquals("hello", roseRingParakeet1.getFavoriteSaying());
+        assertNull(greatAuk1.getFavoriteSaying());
     }
 }

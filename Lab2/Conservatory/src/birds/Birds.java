@@ -13,4 +13,8 @@ public interface Birds {
 
     Food[] getFood();
 
+   String getNameOfWaterBody();
+
+   String getFavoriteSaying();
+
 }

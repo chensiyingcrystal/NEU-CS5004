@@ -41,13 +41,33 @@ public class Conservatory {
 //        this.aviaryArrayList.add(a1);
 //        this.numOfAviaries++;
 //        this.locationMap.put(new Aviary(5, "Prey"), 3);
-//        this.locationMap.put(new Aviary(5, "Prey"), 4);
-//        this.locationMap.put(new Aviary(5, "Prey"), 5);
-
-//        this.locationMap.put(new Aviary(3, "Parrots"), 1);
-
-
     }
+
+    // private Map<Aviary,Map<Food, Integer>> foodMap;
+    // Traverse through all aviaries in food map and accumulate the food quantities
+    public Map<Food, Integer> printFoodMap() {
+        Map<Food, Integer> tempMap = new HashMap<>();
+        for (Map.Entry<Aviary, Map<Food, Integer>> entry : this.foodMap.entrySet()) {
+            Aviary tempAviary = entry.getKey();
+            for (Map.Entry<Food, Integer> foodIntegerEntry : this.foodMap.get(tempAviary).entrySet()) {
+                Food tempFoodType = foodIntegerEntry.getKey();
+                Integer tempQuantity = foodIntegerEntry.getValue();
+                Integer tempMapQuantity = tempMap.get(tempFoodType);
+
+                if (!tempMap.containsKey(tempFoodType)) {
+                    tempMap.put(tempFoodType, tempQuantity);
+                } else {
+                    tempMap.put(tempFoodType, tempMapQuantity + tempQuantity);
+                }
+            }
+        }
+        for (Map.Entry<Food, Integer> foodEntry : tempMap.entrySet())
+        System.out.println("Food type: " +foodEntry.getKey() + " quantities: " + foodEntry.getValue());
+        System.out.println("--------------------------------");
+
+        return tempMap;
+    }
+
 
     // traverse the aviaryArrayList, if target category is found and the found aviary
     // has not reached to its capacity, return the found aviary object.
@@ -70,10 +90,12 @@ public class Conservatory {
         if (stopAdding) {
             return;
         }
+
         //check if bird is extinct
         if (bird.isExtinct()) {
             throw new IllegalStateException("Extinct bird cannot be added to conservatory.");
         }
+
 
         // finding the existing bird aviary in the aviaryArrayList.
         String existingBirdCate = getCategory(bird);
@@ -107,9 +129,11 @@ public class Conservatory {
 
     // add food to food map
     public void addFood(Aviary aviary, Birds bird) {
+        if (aviary == null || bird == null) {
+            throw new IllegalArgumentException("Invalid input!");
+        }
         foodMap.computeIfAbsent(aviary, k -> new HashMap<>());
         for (int k = 0; k < bird.getFood().length; ++ k) {
-
             foodMap.get(aviary).merge(bird.getFood()[k], 1, Integer::sum);
         }
     }
@@ -161,7 +185,7 @@ public class Conservatory {
     }
 
     //Print a sign for any given aviary that gives a description of the birds it houses and any interesting information that it may have about that animal.
-    public void printSignForAviary(int aviaryIndex) {
+    public void printSignForAviary (int aviaryIndex) {
         aviaryIndex -= 1;
         if (aviaryIndex > aviaryArrayList.size()) {
             throw new IllegalStateException("At given location, no aviary found.");
@@ -183,11 +207,12 @@ public class Conservatory {
 
     //Print a “map” that lists all the aviaries by location and the birds they house
     public void getMapOfAviaryAndBirdsInfo() {
-        System.out.println("Printing a map for all aviaries");
-        System.out.println("--------------------------------");
+        if (this.locationMap.size() ==0) {
+            System.out.println("No bird is added to the conservatory yet!");
+        }
         for (Map.Entry<Aviary, Integer> entry : this.locationMap.entrySet()) {
             Aviary currAviary = entry.getKey();
-            System.out.println("location:" + entry.getValue() + ", "
+            System.out.println("location:" + entry.getValue() + "; "
                              + "aviary category: " + currAviary.getCategory());
             for (int i = 0; i < currAviary.getSize(); i++) {
                 Birds currBird = currAviary.getBirdList().get(i);
@@ -195,28 +220,25 @@ public class Conservatory {
             }
             System.out.println("--------------------------------");
         }
-        System.out.println("total number of Aviaries: " + this.getNumOfAviaries());
-        System.out.println("total number of birds: " + this.getNumOfBirds());
     }
 
     //Print an index that lists all birds in the conservatory in alphabetical order and their location
     public void printIndex() {
-        List<String> birdInfoList = new ArrayList<String>();
+        //loop through each aviary and add each bird in it to the map with their id and location
+        Map<String, Integer> map = new HashMap<>();
         for (Map.Entry<Aviary, Integer> entry : this.locationMap.entrySet()) {
             Integer currLocation = entry.getValue();
             Aviary currAviary = entry.getKey();
             for (int i = 0; i < currAviary.getSize(); i++) {
                 Birds currBird = currAviary.getBirdList().get(i);
-                String birdTypeAndID = "BirdID:" + currBird.getID() + "| " + "BirdType:" + currBird.getBirdType()
-                        + "| " + "Bird Location" + currLocation;
-                birdInfoList.add(birdTypeAndID);
+                String birdTypeAndID = "BirdType:" + currBird.getBirdType() + ", " + "BirdID:" + currBird.getID();
+                map.put(birdTypeAndID, currLocation);
             }
         }
-        //convert string list to string array in alphabetic order and print them out
-        String[] birdInfoArray = birdInfoList.toArray(new String[0]);
-        System.out.println("Printing index for all birds");
-        for (String str : birdInfoArray) {
-            System.out.println(str);
+        //instantiate a treemap from map and print out all birds information and their location
+        Map<String, Integer> treeMap = new TreeMap<>(map);
+        for (Map.Entry<String, Integer> entry : treeMap.entrySet()) {
+            System.out.println(entry.getKey() + " ,BirdLocation: " + entry.getValue());
         }
     }
 
@@ -235,6 +257,9 @@ public class Conservatory {
     }
 
     public void setNumOfAviaries(int numOfAviaries) {
+        if (numOfAviaries < 0) {
+            throw new IllegalArgumentException("Assigned number of Aviaries must be positive!");
+        }
         this.numOfAviaries = numOfAviaries;
     }
 

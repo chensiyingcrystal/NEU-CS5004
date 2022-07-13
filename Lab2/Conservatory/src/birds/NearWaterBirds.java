@@ -1,11 +1,16 @@
 package birds;
 
 abstract class NearWaterBirds extends AbstractBirds {
-    String nameOfWaterBody;
+    protected String nameOfWaterBody;
 
-    String getNameOfWaterBody() {
+    @Override
+    public String getNameOfWaterBody() {
         return this.nameOfWaterBody;
     }
 
-
+    @Override
+    public String getFavoriteSaying() {
+        System.out.println(getBirdType() + " are not parrots.");
+        return null;
+    }
 }
