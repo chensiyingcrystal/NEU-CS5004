@@ -15,14 +15,14 @@ public class Main {
         Set<String> set = new HashSet<>();
         for (int i = 0; i < 7; ++i) {
             for (int j = 0; j < 3; ++j) {
-                Birds eagle = new Eagles("eagle" + rand.nextInt(25));
+                Birds eagle = new Eagles("eagle" + rand.nextInt(50));
                 while (set.contains(eagle.getID())) {
                     eagle = new Eagles("eagle" + rand.nextInt(50));
                 }
                 c1.assignBirds(eagle);
                 set.add(eagle.getID());
             }
-                Birds hawk = new Hawks("hawk" + i);
+                Birds hawk = new Hawks("hawk" + rand.nextInt(50));
             c1.assignBirds(hawk);
         }
 
