@@ -8,7 +8,7 @@
     <node x="486.0000000000001" y="893.5">birds.Osprey</node>
     <node x="1108.75" y="1052.0">birds.Swan</node>
     <node x="2458.75" y="613.0">birds.Flightless</node>
-    <node x="890.0" y="1172.0">birds.Aviary</node>
+    <node x="-563.0864626100272" y="1425.235747303544">birds.Aviary</node>
     <node x="2456.25" y="893.5">birds.Kiwis</node>
     <node x="675.0" y="1172.0">birds.Food</node>
     <node x="1248.5" y="256.0">birds.AbstractBirds</node>
@@ -22,7 +22,7 @@
     <node x="730.7500000000001" y="860.0">birds.Shorebirds</node>
     <node x="232.53070175438597" y="613.0">birds.Prey</node>
     <node x="1351.75" y="1052.0">birds.Duck</node>
-    <node x="0.0" y="1172.0">birds.Conservatory</node>
+    <node x="-1127.5654853620954" y="1385.251155624037">birds.Conservatory</node>
     <node x="0.0" y="893.5">birds.Eagles</node>
     <node x="1365.25" y="860.0">birds.WaterFowl</node>
     <node x="766.5043859649123" y="624.0">birds.Owls</node>
@@ -172,8 +172,10 @@
       <point x="0.0" y="82.0" />
     </edge>
   </edges>
-  <settings layout="Hierarchic" zoom="0.37514450867052024" showDependencies="false" x="1461.5" y="855.0" />
-  <SelectedNodes />
+  <settings layout="Hierarchic" zoom="1.2751445086705202" showDependencies="false" x="-652.8413576728349" y="1663.5079838674396" />
+  <SelectedNodes>
+    <node>birds.Aviary</node>
+  </SelectedNodes>
   <Categories>
     <Category>Constructors</Category>
     <Category>Fields</Category>

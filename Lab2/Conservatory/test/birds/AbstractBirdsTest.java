@@ -21,6 +21,7 @@ public class AbstractBirdsTest{
         this.owl1 = new Owls("owl1");
         this.roseRingParakeet1 = new RoseRingParakeet("roseRingParakeet1");
         this.greatAuk1 = new GreatAuk("greatAuk1");
+        this.kiwis1 = new Kiwis(("kiwis1"));
 
     }
 

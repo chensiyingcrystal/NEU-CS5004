@@ -59,8 +59,6 @@ public class ConservatoryTest {
         }
     }
 
-
-
     @Test
     public void testAddFood() {
         Aviary testAviary = new Aviary(5,"prey");

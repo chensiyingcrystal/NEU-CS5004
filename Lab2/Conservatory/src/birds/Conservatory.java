@@ -15,6 +15,18 @@ public class Conservatory {
     private Map<AviaryCategory,ArrayList<BirdType>> aviaryCategory;
     private boolean stopAdding = false;
 
+    /**
+     * class Constructor
+     * initialize the aviary with 4 sub-categories
+     * initialize locationMap and foodMap with map container
+     * aviaryArrayList to hold current existing aviaries in Conservatory
+     */
+    public Conservatory() {
+        initializeAviaryCategory();
+        this.locationMap = new LinkedHashMap<>();
+        this.foodMap = new LinkedHashMap<>();
+        this.aviaryArrayList = new ArrayList<>();
+    }
 
     private void initializeAviaryCategory() {
         List<BirdType> flightlessNameLists = Arrays.asList(BirdType.Emus, BirdType.Moas, BirdType.Kiwis);
@@ -29,45 +41,6 @@ public class Conservatory {
         aviaryCategory.put(AviaryCategory.Waterfowl, new ArrayList<>(waterfowlNameLists));
         aviaryCategory.put(AviaryCategory.Other, new ArrayList<>(otherNameLists));
     }
-
-    // create a conservatory with given arbitrary number of aviaries
-    public Conservatory() {
-        initializeAviaryCategory();
-        this.locationMap = new LinkedHashMap<>();
-        this.aviaryArrayList = new ArrayList<>();
-        this.foodMap = new LinkedHashMap<>();
-//        Aviary a1 = new Aviary(5, "Prey");
-//        this.locationMap.put(a1, 1);
-//        this.aviaryArrayList.add(a1);
-//        this.numOfAviaries++;
-//        this.locationMap.put(new Aviary(5, "Prey"), 3);
-    }
-
-    // private Map<Aviary,Map<Food, Integer>> foodMap;
-    // Traverse through all aviaries in food map and accumulate the food quantities
-    public Map<Food, Integer> printFoodMap() {
-        Map<Food, Integer> tempMap = new LinkedHashMap<>();
-        for (Map.Entry<Aviary, Map<Food, Integer>> entry : this.foodMap.entrySet()) {
-            Aviary tempAviary = entry.getKey();
-            for (Map.Entry<Food, Integer> foodIntegerEntry : this.foodMap.get(tempAviary).entrySet()) {
-                Food tempFoodType = foodIntegerEntry.getKey();
-                Integer tempQuantity = foodIntegerEntry.getValue();
-                Integer tempMapQuantity = tempMap.get(tempFoodType);
-
-                if (!tempMap.containsKey(tempFoodType)) {
-                    tempMap.put(tempFoodType, tempQuantity);
-                } else {
-                    tempMap.put(tempFoodType, tempMapQuantity + tempQuantity);
-                }
-            }
-        }
-        for (Map.Entry<Food, Integer> foodEntry : tempMap.entrySet())
-            System.out.println("Food type: " +foodEntry.getKey() + " quantities: " + foodEntry.getValue());
-        System.out.println("--------------------------------");
-
-        return tempMap;
-    }
-
 
     // traverse the aviaryArrayList, if target category is found and the found aviary
     // has not reached to its capacity, return the found aviary object.
@@ -95,7 +68,6 @@ public class Conservatory {
         if (bird.isExtinct()) {
             throw new IllegalStateException("Extinct bird cannot be added to conservatory.");
         }
-
 
         // finding the existing bird aviary in the aviaryArrayList.
         String existingBirdCate = getCategory(bird);
@@ -161,6 +133,30 @@ public class Conservatory {
         return false;
     }
 
+    // private Map<Aviary,Map<Food, Integer>> foodMap;
+    // Traverse through all aviaries in food map and accumulate the food quantities
+    public Map<Food, Integer> printFoodMap() {
+        Map<Food, Integer> tempMap = new LinkedHashMap<>();
+        for (Map.Entry<Aviary, Map<Food, Integer>> entry : this.foodMap.entrySet()) {
+            Aviary tempAviary = entry.getKey();
+            for (Map.Entry<Food, Integer> foodIntegerEntry : this.foodMap.get(tempAviary).entrySet()) {
+                Food tempFoodType = foodIntegerEntry.getKey();
+                Integer tempQuantity = foodIntegerEntry.getValue();
+                Integer tempMapQuantity = tempMap.get(tempFoodType);
+
+                if (!tempMap.containsKey(tempFoodType)) {
+                    tempMap.put(tempFoodType, tempQuantity);
+                } else {
+                    tempMap.put(tempFoodType, tempMapQuantity + tempQuantity);
+                }
+            }
+        }
+        for (Map.Entry<Food, Integer> foodEntry : tempMap.entrySet())
+            System.out.println("Food type: " +foodEntry.getKey() + " quantities: " + foodEntry.getValue());
+        System.out.println("--------------------------------");
+
+        return tempMap;
+    }
 
     // Have a guest look up which aviary a bird is in
     // return aviary location
