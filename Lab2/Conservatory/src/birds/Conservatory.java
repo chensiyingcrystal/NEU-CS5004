@@ -22,24 +22,10 @@ public class Conservatory {
      * aviaryArrayList to hold current existing aviaries in Conservatory
      */
     public Conservatory() {
-        initializeAviaryCategory();
+        aviaryCategory = Aviary.initializeAviaryCategory();
         this.locationMap = new LinkedHashMap<>();
         this.foodMap = new LinkedHashMap<>();
         this.aviaryArrayList = new ArrayList<>();
-    }
-
-    private void initializeAviaryCategory() {
-        List<BirdType> flightlessNameLists = Arrays.asList(BirdType.Emus, BirdType.Moas, BirdType.Kiwis);
-        List<BirdType> preyNameLists = Arrays.asList(BirdType.Hawks, BirdType.Eagles, BirdType.Osprey);
-        List<BirdType> waterfowlNameLists = Arrays.asList(BirdType.Duck, BirdType.Swan, BirdType.Osprey);
-        List<BirdType> otherNameLists = Arrays.asList(BirdType.Owls, BirdType.RoseRingParakeet, BirdType.GrayParrot,
-                BirdType.SulfurCrestedCockatoo, BirdType.GreatAuk,
-                BirdType.HornedPuffin, BirdType.AfricanJacana);
-        aviaryCategory = new LinkedHashMap<>();
-        aviaryCategory.put(AviaryCategory.Flightless, new ArrayList<>(flightlessNameLists));
-        aviaryCategory.put(AviaryCategory.Prey, new ArrayList<>(preyNameLists));
-        aviaryCategory.put(AviaryCategory.Waterfowl, new ArrayList<>(waterfowlNameLists));
-        aviaryCategory.put(AviaryCategory.Other, new ArrayList<>(otherNameLists));
     }
 
     // traverse the aviaryArrayList, if target category is found and the found aviary

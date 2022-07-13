@@ -1,12 +1,12 @@
 package birds;
 
-import java.util.ArrayList;
+import java.util.*;
 
 public class Aviary {
     private String category;
     private int upperLimit;
     private ArrayList<Birds> birdList;
-    private AviaryCategory ac;
+    private static Map<AviaryCategory,ArrayList<BirdType>> ac;
 
     /**
      * Class constructor.
@@ -16,6 +16,21 @@ public class Aviary {
         this.upperLimit = 0;
         this.birdList = new ArrayList<>();
 
+    }
+
+    public static Map<AviaryCategory,ArrayList<BirdType>> initializeAviaryCategory() {
+        List<BirdType> flightlessNameLists = Arrays.asList(BirdType.Emus, BirdType.Moas, BirdType.Kiwis);
+        List<BirdType> preyNameLists = Arrays.asList(BirdType.Hawks, BirdType.Eagles, BirdType.Osprey);
+        List<BirdType> waterfowlNameLists = Arrays.asList(BirdType.Duck, BirdType.Swan, BirdType.Osprey);
+        List<BirdType> otherNameLists = Arrays.asList(BirdType.Owls, BirdType.RoseRingParakeet, BirdType.GrayParrot,
+                BirdType.SulfurCrestedCockatoo, BirdType.GreatAuk,
+                BirdType.HornedPuffin, BirdType.AfricanJacana);
+        ac = new LinkedHashMap<>();
+        ac.put(AviaryCategory.Flightless, new ArrayList<>(flightlessNameLists));
+        ac.put(AviaryCategory.Prey, new ArrayList<>(preyNameLists));
+        ac.put(AviaryCategory.Waterfowl, new ArrayList<>(waterfowlNameLists));
+        ac.put(AviaryCategory.Other, new ArrayList<>(otherNameLists));
+        return ac;
     }
 
     /**
