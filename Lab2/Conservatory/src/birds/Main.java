@@ -1,5 +1,9 @@
 package birds;
 
+import java.util.HashSet;
+import java.util.Random;
+import java.util.Set;
+
 public class Main {
     public static void main(String[] args) throws Exception {
         Conservatory c1 = new Conservatory();
@@ -7,10 +11,16 @@ public class Main {
         Birds eagle1 = new Eagles("eagle22");
         c1.assignBirds(eagle1);
 
+        Random rand = new Random();
+        Set<String> set = new HashSet<>();
         for (int i = 0; i < 7; ++i) {
             for (int j = 0; j < 3; ++j) {
-                Birds eagle = new Eagles("eagle" + j);
+                Birds eagle = new Eagles("eagle" + rand.nextInt(25));
+                while (set.contains(eagle.getID())) {
+                    eagle = new Eagles("eagle" + rand.nextInt(50));
+                }
                 c1.assignBirds(eagle);
+                set.add(eagle.getID());
             }
                 Birds hawk = new Hawks("hawk" + i);
             c1.assignBirds(hawk);
