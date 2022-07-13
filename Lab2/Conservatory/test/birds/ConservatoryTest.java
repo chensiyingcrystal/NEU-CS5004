@@ -158,10 +158,23 @@ public class ConservatoryTest {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @Test
+    public void setNumOfAviaries2() {
         try {
             c1.setNumOfAviaries(-5);
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        try {
+            c1.setNumOfAviaries(2);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
+
+
 }
