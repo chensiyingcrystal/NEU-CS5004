@@ -33,7 +33,7 @@ public class Conservatory {
     // create a conservatory with given arbitrary number of aviaries
     public Conservatory() {
         initializeAviaryCategory();
-        this.locationMap = new HashMap<>();
+        this.locationMap = new LinkedHashMap<>();
         this.aviaryArrayList = new ArrayList<>();
         this.foodMap = new HashMap<>();
 //        Aviary a1 = new Aviary(5, "Prey");
@@ -231,13 +231,26 @@ public class Conservatory {
             Aviary currAviary = entry.getKey();
             for (int i = 0; i < currAviary.getSize(); i++) {
                 Birds currBird = currAviary.getBirdList().get(i);
-                String birdTypeAndID = "BirdID:" + currBird.getID() + "| " + "BirdType:" + currBird.getBirdType()
-                        + "| " + "Bird Location" + currLocation;
+                String birdTypeAndID = "BirdID:" + currBird.getID() + "---" + "Bird Location" + currLocation;
                 birdInfoList.add(birdTypeAndID);
             }
         }
         //convert string list to string array in alphabetic order and print them out
         String[] birdInfoArray = birdInfoList.toArray(new String[0]);
+        Arrays.sort(birdInfoArray, (String a, String b) -> {
+            int n = Math.min(a.length(), b.length());
+            String a1 = a.toLowerCase(), b1 = b.toLowerCase();
+            int i = 0;
+            while (i < n) {
+                if (a1.charAt(i) == b1.charAt(i)) {
+                    i++;
+                } else {
+                    return a1.charAt(i) - b1.charAt(i);
+                }
+            }
+            return a1.length() - b1.length();
+        });
+
         System.out.println("Printing index for all birds");
         for (String str : birdInfoArray) {
             System.out.println(str);
