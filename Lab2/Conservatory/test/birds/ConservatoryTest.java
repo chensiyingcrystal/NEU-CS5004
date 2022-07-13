@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class ConservatoryTest<eagle1> {
+public class ConservatoryTest {
     Conservatory c1;
     Birds hawk1;
     Birds kiwis1;

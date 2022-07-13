@@ -75,13 +75,12 @@ public class AbstractBirdsTest{
         assertEquals(Arrays.toString(new String[]{String.valueOf(Food.smallMammals), String.valueOf(Food.insects)}), Arrays.toString(roseRingParakeet1.getFood()));
         assertEquals(Arrays.toString(new String[]{String.valueOf(Food.smallMammals), String.valueOf(Food.insects)}), Arrays.toString(greatAuk1.getFood()));
         assertEquals(Arrays.toString(new String[]{String.valueOf(Food.seeds), String.valueOf(Food.insects)}), Arrays.toString(kiwis1.getFood()));
-
     }
 
     @Test
     public void testGetWaterBody() {
         assertEquals("ocean", greatAuk1.getNameOfWaterBody());
-        assertNull(hawk1.getNameOfWaterBody());
+        assertEquals("sand",hawk1.getNameOfWaterBody());
         assertNull(kiwis1.getNameOfWaterBody());
     }
 

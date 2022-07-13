@@ -8,7 +8,7 @@ abstract class Shorebirds extends NearWaterBirds {
     private static String[] SHARED_C = {""};
     private static List<String> valid = Arrays.asList("wetlands", "saltwater", "ocean");
 
-    Shorebirds(String nameOfWaterBody) {
+    public Shorebirds(String nameOfWaterBody) {
         if (!valid.contains(nameOfWaterBody)) {
             throw new IllegalArgumentException("This is not a shorebirds!");
         }
