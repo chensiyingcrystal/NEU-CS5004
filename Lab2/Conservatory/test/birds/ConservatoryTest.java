@@ -94,14 +94,28 @@ public class ConservatoryTest {
             e.printStackTrace();
         }
         try {
+            c1.printSignForAviary(2);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void printSignForAviary2() {
+        //test if index passed is invalid(less than 1)
+        try {
             c1.printSignForAviary(-1);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        //test if index passed is invalid(greater than total number of aviaries in this conservatory)
+        try {
+            c1.printSignForAviary(6);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
     }
-
-
 
     @Test
     public void getMapOfAviaryAndBirdsInfo() {

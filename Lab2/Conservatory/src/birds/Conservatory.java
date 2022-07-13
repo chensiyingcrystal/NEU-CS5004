@@ -187,8 +187,12 @@ public class Conservatory {
     //Print a sign for any given aviary that gives a description of the birds it houses and any interesting information that it may have about that animal.
     public void printSignForAviary(int aviaryIndex) {
         aviaryIndex -= 1;
+        if (aviaryIndex < 1) {
+            throw new IllegalArgumentException("Invalid aviary index(staring from 1)");
+        }
+
         if (aviaryIndex > aviaryArrayList.size()) {
-            throw new IllegalStateException("At given location, no aviary found.");
+            throw new IllegalStateException("At given location, no aviary found. Index out of boundary.");
         }
         System.out.println("Printing out information of all birds in aviary " + (aviaryIndex + 1));
         Aviary tempAviary = aviaryArrayList.get(aviaryIndex);
