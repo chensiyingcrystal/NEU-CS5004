@@ -13,6 +13,7 @@ public class AbstractBirdsTest{
     Birds roseRingParakeet1;
     Birds greatAuk1;
     Birds kiwis1;
+    Birds swan1;
 
     @Before
     public void setUp() throws Exception {
@@ -20,7 +21,7 @@ public class AbstractBirdsTest{
         this.owl1 = new Owls("owl1");
         this.roseRingParakeet1 = new RoseRingParakeet("roseRingParakeet1");
         this.greatAuk1 = new GreatAuk("greatAuk1");
-        this.kiwis1 = new Kiwis("kiwis1");
+
     }
 
     @Test
@@ -52,6 +53,7 @@ public class AbstractBirdsTest{
 
     @Test
     public void testIsExtinct() {
+        this.kiwis1 = new Kiwis("kiwis1");
         assertFalse(hawk1.isExtinct());
         assertFalse(owl1.isExtinct());
         assertFalse(roseRingParakeet1.isExtinct());
@@ -75,19 +77,29 @@ public class AbstractBirdsTest{
         assertEquals(Arrays.toString(new String[]{String.valueOf(Food.smallMammals), String.valueOf(Food.insects)}), Arrays.toString(roseRingParakeet1.getFood()));
         assertEquals(Arrays.toString(new String[]{String.valueOf(Food.smallMammals), String.valueOf(Food.insects)}), Arrays.toString(greatAuk1.getFood()));
         assertEquals(Arrays.toString(new String[]{String.valueOf(Food.seeds), String.valueOf(Food.insects)}), Arrays.toString(kiwis1.getFood()));
-
     }
 
     @Test
     public void testGetWaterBody() {
+        this.swan1 = new Swan("swan1");
+        this.kiwis1 = new Kiwis("kiwis1");
         assertEquals("ocean", greatAuk1.getNameOfWaterBody());
-        assertNull(hawk1.getNameOfWaterBody());
-        assertNull(kiwis1.getNameOfWaterBody());
+        assertEquals("freshwater",swan1.getNameOfWaterBody());
+        try {
+            assertEquals("something",kiwis1.getNameOfWaterBody());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
     @Test
     public void testGetFavoriteSaying() {
         assertEquals("hello", roseRingParakeet1.getFavoriteSaying());
-        assertNull(greatAuk1.getFavoriteSaying());
+        try {
+            assertEquals("something", greatAuk1.getFavoriteSaying());
+        } catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }

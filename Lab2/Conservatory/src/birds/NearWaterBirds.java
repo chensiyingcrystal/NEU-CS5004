@@ -8,9 +8,9 @@ abstract class NearWaterBirds extends AbstractBirds {
         return this.nameOfWaterBody;
     }
 
+
     @Override
     public String getFavoriteSaying() {
-        System.out.println(getBirdType() + " are not parrots.");
-        return null;
+        throw new IllegalStateException(getBirdType() + " are not parrots.");
     }
 }

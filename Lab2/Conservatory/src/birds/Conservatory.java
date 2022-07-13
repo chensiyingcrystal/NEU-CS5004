@@ -23,7 +23,7 @@ public class Conservatory {
         List<BirdType> otherNameLists = Arrays.asList(BirdType.Owls, BirdType.RoseRingParakeet, BirdType.GrayParrot,
                 BirdType.SulfurCrestedCockatoo, BirdType.GreatAuk,
                 BirdType.HornedPuffin, BirdType.AfricanJacana);
-        aviaryCategory = new HashMap<>();
+        aviaryCategory = new LinkedHashMap<>();
         aviaryCategory.put(AviaryCategory.Flightless, new ArrayList<>(flightlessNameLists));
         aviaryCategory.put(AviaryCategory.Prey, new ArrayList<>(preyNameLists));
         aviaryCategory.put(AviaryCategory.Waterfowl, new ArrayList<>(waterfowlNameLists));
@@ -35,7 +35,7 @@ public class Conservatory {
         initializeAviaryCategory();
         this.locationMap = new LinkedHashMap<>();
         this.aviaryArrayList = new ArrayList<>();
-        this.foodMap = new HashMap<>();
+        this.foodMap = new LinkedHashMap<>();
 //        Aviary a1 = new Aviary(5, "Prey");
 //        this.locationMap.put(a1, 1);
 //        this.aviaryArrayList.add(a1);
@@ -46,7 +46,7 @@ public class Conservatory {
     // private Map<Aviary,Map<Food, Integer>> foodMap;
     // Traverse through all aviaries in food map and accumulate the food quantities
     public Map<Food, Integer> printFoodMap() {
-        Map<Food, Integer> tempMap = new HashMap<>();
+        Map<Food, Integer> tempMap = new LinkedHashMap<>();
         for (Map.Entry<Aviary, Map<Food, Integer>> entry : this.foodMap.entrySet()) {
             Aviary tempAviary = entry.getKey();
             for (Map.Entry<Food, Integer> foodIntegerEntry : this.foodMap.get(tempAviary).entrySet()) {
@@ -132,7 +132,7 @@ public class Conservatory {
         if (aviary == null || bird == null) {
             throw new IllegalArgumentException("Invalid input!");
         }
-        foodMap.computeIfAbsent(aviary, k -> new HashMap<>());
+        foodMap.computeIfAbsent(aviary, k -> new LinkedHashMap<>());
         for (int k = 0; k < bird.getFood().length; ++ k) {
             foodMap.get(aviary).merge(bird.getFood()[k], 1, Integer::sum);
         }

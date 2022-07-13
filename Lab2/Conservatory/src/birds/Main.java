@@ -8,7 +8,11 @@ public class Main {
         c1.assignBirds(eagle1);
 
         for (int i = 0; i < 7; ++i) {
-            Birds hawk = new Hawks("hawk" + i);
+            for (int j = 0; j < 3; ++j) {
+                Birds eagle = new Eagles("eagle" + j);
+                c1.assignBirds(eagle);
+            }
+                Birds hawk = new Hawks("hawk" + i);
             c1.assignBirds(hawk);
         }
 
