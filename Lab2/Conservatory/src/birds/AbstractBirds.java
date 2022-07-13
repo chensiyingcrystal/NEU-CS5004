@@ -7,7 +7,6 @@ abstract class AbstractBirds implements Birds {
     protected int numberOfWings;
     protected Food[] food;
 
-
     @Override
     public String getID() {
         return this.id;
@@ -30,6 +29,5 @@ abstract class AbstractBirds implements Birds {
     public Food[] getFood() {
         return this.food;
     }
-
 
 }

@@ -6,12 +6,4 @@ public enum AviaryCategory {
     Waterfowl,
     Other
 
-
-
-//    private final String birdTypes;
-//
-//    AviaryCategory(String birdTypes) {
-//        this.category = category;
-//        this.birdTypes = birdTypes;
-//    }
 }

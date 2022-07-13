@@ -21,8 +21,8 @@ public class Conservatory {
         List<BirdType> preyNameLists = Arrays.asList(BirdType.Hawks, BirdType.Eagles, BirdType.Osprey);
         List<BirdType> waterfowlNameLists = Arrays.asList(BirdType.Duck, BirdType.Swan, BirdType.Osprey);
         List<BirdType> otherNameLists = Arrays.asList(BirdType.Owls, BirdType.RoseRingParakeet, BirdType.GrayParrot,
-                                                        BirdType.SulfurCrestedCockatoo, BirdType.GreatAuk,
-                                                        BirdType.HornedPuffin, BirdType.AfricanJacana);
+                BirdType.SulfurCrestedCockatoo, BirdType.GreatAuk,
+                BirdType.HornedPuffin, BirdType.AfricanJacana);
         aviaryCategory = new HashMap<>();
         aviaryCategory.put(AviaryCategory.Flightless, new ArrayList<>(flightlessNameLists));
         aviaryCategory.put(AviaryCategory.Prey, new ArrayList<>(preyNameLists));
@@ -41,28 +41,48 @@ public class Conservatory {
 //        this.aviaryArrayList.add(a1);
 //        this.numOfAviaries++;
 //        this.locationMap.put(new Aviary(5, "Prey"), 3);
-//        this.locationMap.put(new Aviary(5, "Prey"), 4);
-//        this.locationMap.put(new Aviary(5, "Prey"), 5);
-
-//        this.locationMap.put(new Aviary(3, "Parrots"), 1);
-
-
     }
+
+    // private Map<Aviary,Map<Food, Integer>> foodMap;
+    // Traverse through all aviaries in food map and accumulate the food quantities
+    public Map<Food, Integer> printFoodMap() {
+        Map<Food, Integer> tempMap = new HashMap<>();
+        for (Map.Entry<Aviary, Map<Food, Integer>> entry : this.foodMap.entrySet()) {
+            Aviary tempAviary = entry.getKey();
+            for (Map.Entry<Food, Integer> foodIntegerEntry : this.foodMap.get(tempAviary).entrySet()) {
+                Food tempFoodType = foodIntegerEntry.getKey();
+                Integer tempQuantity = foodIntegerEntry.getValue();
+                Integer tempMapQuantity = tempMap.get(tempFoodType);
+
+                if (!tempMap.containsKey(tempFoodType)) {
+                    tempMap.put(tempFoodType, tempQuantity);
+                } else {
+                    tempMap.put(tempFoodType, tempMapQuantity + tempQuantity);
+                }
+            }
+        }
+        for (Map.Entry<Food, Integer> foodEntry : tempMap.entrySet())
+            System.out.println("Food type: " +foodEntry.getKey() + " quantities: " + foodEntry.getValue());
+        System.out.println("--------------------------------");
+
+        return tempMap;
+    }
+
 
     // traverse the aviaryArrayList, if target category is found and the found aviary
     // has not reached to its capacity, return the found aviary object.
     // If found one is full, skip and look for the next target
     // if nothing found, return null
-   private Aviary isCategoryExisted(String category) {
-       for (Aviary aviary : aviaryArrayList) {
-           if (aviary.getCategory() == category) {
-               if (aviary.getSize() < 5 ) {
-                   return aviary;
-               }
-           }
-       }
-       return null;
-   }
+    private Aviary isCategoryExisted(String category) {
+        for (Aviary aviary : aviaryArrayList) {
+            if (aviary.getCategory() == category) {
+                if (aviary.getSize() < 5 ) {
+                    return aviary;
+                }
+            }
+        }
+        return null;
+    }
 
     //Add and Assign a bird to an aviary in the conservatory. Assignments must follow some criteria.
     public void assignBirds(Birds bird) throws Exception {
@@ -70,10 +90,12 @@ public class Conservatory {
         if (stopAdding) {
             return;
         }
+
         //check if bird is extinct
         if (bird.isExtinct()) {
             throw new IllegalStateException("Extinct bird cannot be added to conservatory.");
         }
+
 
         // finding the existing bird aviary in the aviaryArrayList.
         String existingBirdCate = getCategory(bird);
@@ -94,22 +116,24 @@ public class Conservatory {
             }
             // if the aviary is full, create a new aviary with given category
         } else {
-                tempAviary = new Aviary(5, existingBirdCate);
-                aviaryArrayList.add(tempAviary);
-                numOfBirds++;
-                numOfAviaries++;
-                locationMap.put(tempAviary, numOfAviaries);
-                tempAviary.addBird(bird);
-                addFood(tempAviary, bird);
+            tempAviary = new Aviary(5, existingBirdCate);
+            aviaryArrayList.add(tempAviary);
+            numOfBirds++;
+            numOfAviaries++;
+            locationMap.put(tempAviary, numOfAviaries);
+            tempAviary.addBird(bird);
+            addFood(tempAviary, bird);
 
         }
     }
 
     // add food to food map
     public void addFood(Aviary aviary, Birds bird) {
+        if (aviary == null || bird == null) {
+            throw new IllegalArgumentException("Invalid input!");
+        }
         foodMap.computeIfAbsent(aviary, k -> new HashMap<>());
         for (int k = 0; k < bird.getFood().length; ++ k) {
-
             foodMap.get(aviary).merge(bird.getFood()[k], 1, Integer::sum);
         }
     }
