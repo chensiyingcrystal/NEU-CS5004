@@ -29,8 +29,7 @@ abstract class Parrots extends AbstractBirds {
 
     @Override
     public String getNameOfWaterBody() {
-        System.out.println(getBirdType() + " are not water bird.");
-        return null;
+        throw new IllegalStateException(getBirdType() + " are not water bird.");
     }
 
 }
