@@ -1,5 +1,7 @@
 package birds;
 
+import java.util.*;
+
 public class Main {
     public static void main(String[] args) throws Exception {
         Conservatory c1 = new Conservatory();
@@ -34,6 +36,8 @@ public class Main {
         System.out.println("~~~~~~~~~~~~~~~~~~~~~~~");
         c1.printFoodMap();
         System.out.println("~~~~~~~~~~~~~~~~~~~~~~~");
+
+        List<AviaryCategory> l1 = Arrays.asList(AviaryCategory.Flightless, AviaryCategory.Prey);
 
     }
 }
