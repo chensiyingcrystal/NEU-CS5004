@@ -5,6 +5,7 @@ public class DepartmentImpl implements Department{
 
     public DepartmentImpl() {
         this.engineerMap = new HashMap<>();
+        //use final static private int variable instead of using 4
         for (int i = 0; i < 4; i++) {
             engineerMap.put(i, new OrderedListImpl<>());
         }
