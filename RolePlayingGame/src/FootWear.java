@@ -1,4 +1,4 @@
-public class FootWear extends GearImpl {
+public class FootWear extends AbstractGear {
     public FootWear(String nameAdj, String nameNoun, int attackValue, int defenseValue) {
         this.nameAdj = nameAdj;
         this.nameNoun = nameNoun;

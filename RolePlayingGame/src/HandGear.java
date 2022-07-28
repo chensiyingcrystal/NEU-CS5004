@@ -1,4 +1,4 @@
-public class HandGear extends GearImpl {
+public class HandGear extends AbstractGear {
     public HandGear(String nameAdj, String nameNoun, int attackValue) {
         this.nameAdj = nameAdj;
         this.nameNoun = nameNoun;

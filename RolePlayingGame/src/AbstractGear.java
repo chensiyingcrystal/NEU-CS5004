@@ -1,4 +1,4 @@
-public abstract class GearImpl implements Gear{
+public abstract class AbstractGear implements Gear{
     protected String nameAdj;
     protected String nameNoun;
     protected GearType gearType;
@@ -7,7 +7,20 @@ public abstract class GearImpl implements Gear{
 
     @Override
     public Gear combine(Gear other) {
-        return null;
+        if (other == null) {
+            throw new NullPointerException("Null pointer to gear!");
+        }
+
+        if (other == this) {
+            throw new IllegalArgumentException("Must combine with other instances!");
+        }
+
+        if (this.getGearType() != other.getGearType()) {
+            throw new IllegalArgumentException("Cannot combine with other type!");
+        }
+
+        Gear combinedGear = new HeadGear(this.nameAdj + " " + other.getNameAdj(), other.getNameNoun(), this.defenseValue + other.getDefenseValue());
+        return combinedGear;
     }
 
     @Override
